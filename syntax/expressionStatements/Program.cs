@@ -26,6 +26,14 @@ namespace expressionStatements
             // BreakStatement(string arg) 
             BreakStatement(input);
 
+            // Add method 
+            int i1 = 1;
+            int i2 = 1;
+            Add(i1, i2);
+            // ReturnMethod() 
+            ReturnMethod();
+
+
         }
 
         static void SwitchStatement(string arg){
@@ -101,5 +109,27 @@ namespace expressionStatements
             }
         }
 
+        static int Add(int a, int b ){
+            Console.WriteLine(" add int");
+            Console.WriteLine($" add int a+b: {a+b}");
+            return a+b;
+        }
+
+        static void ReturnMethod(){
+            Console.WriteLine(" ReturnMethod ");
+            Console.WriteLine($" print add method: {Add(2,3)}");
+            return ;
+        }
+        static void ContinueStatement(string[] arg){
+            Console.WriteLine(" ContinueStatement ");
+            for (int i = 0 ; i < arg.Length ; i++){
+                if(arg[i].StartsWith("/")){
+                    continue;
+                }
+                Console.WriteLine($" {arg[i]}");
+            }
+            
+        }
+        
     }
 }
