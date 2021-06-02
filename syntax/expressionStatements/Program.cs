@@ -7,9 +7,13 @@ namespace expressionStatements
         static void Main(string[] args)
         {
             
-            string s = "Revature"; 
+            string s = "Revature "; 
             // SwitchStatement(s);
-            SwitchStatement("Revature");
+            SwitchStatement("Revature ");
+            // IfStatement 
+            IfStatement("Revature");
+            // ForEachStatement
+            ForEachStatement("Revature");
         }
 
         static void SwitchStatement(string arg){
@@ -29,5 +33,22 @@ namespace expressionStatements
                     break;
             }
         }
+
+        static void IfStatement(string arg){
+            int n = arg.Length;
+            if(n > 0){
+                Console.WriteLine($" This argument length is {n}");
+            }
+            else{
+                Console.WriteLine(" no argument ");
+            }
+        }
+
+        static void ForEachStatement(string arg){
+            foreach(char c in arg){
+                Console.WriteLine($" {c}");
+            }
+        }
+
     }
 }
