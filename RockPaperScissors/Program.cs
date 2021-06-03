@@ -16,13 +16,17 @@ namespace RockPaperScissors
         static void Main(string[] args)
         {
             // get the players name to print out the winners 
-            Console.WriteLine("Please enter your name");
-            string playerName = Console.ReadLine();
+            Console.WriteLine("*****************************************************");
+            string playerName = GetUserName();
+            Console.WriteLine("*****************************************************");
+
+            Console.WriteLine($"\t Hi {playerName}, Welcome to Rock-Paper-Scissors!");
 
             // implement the code to play 3 rounds. -- done --  
             int round = 0;
             do {
-                Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
+                // Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
+                Console.WriteLine("\nPlease make a choice.");
                 bool successfulConversion = false;
                 int playerChoiceInt;
                 do
@@ -63,9 +67,9 @@ namespace RockPaperScissors
                 //check who won.
                 if ((playerChoiceInt == 1 && computerChoice == 2)
                     || (playerChoiceInt == 2 && computerChoice == 3)
-                    || (playerChoiceInt == 3 && computerChoice == 1)) Console.WriteLine("Computer Wins");
-                else if (playerChoiceInt == computerChoice) Console.WriteLine("Tie Game!!");
-                else Console.WriteLine($"{playerName} Wins!!!");
+                    || (playerChoiceInt == 3 && computerChoice == 1)) Console.WriteLine("\nComputer Wins");
+                else if (playerChoiceInt == computerChoice) Console.WriteLine("\nTie Game!!");
+                else Console.WriteLine($"\n{playerName} Wins!!!");
 
                 //you can get typeDef the number to the equivalent RpsChoice Enum.
                 Console.WriteLine((RpsChoice)playerChoiceInt);
@@ -73,30 +77,26 @@ namespace RockPaperScissors
 
                 round++;
                 // Console.WriteLine($"{round} rounds done");
-                Console.WriteLine($"{3-round} more rounds");
 
 
                 // implement a loop to play again if the player chooses to.
                 if (round < 3){
-                    Console.WriteLine($" {playerName} Would you like to play again?");
+                    Console.WriteLine($"\n{3-round} more rounds");
+                    Console.WriteLine($"{playerName} Would you like to play again?");
                     string playAgain = Console.ReadLine();
-
                     if(playAgain == "N" || playAgain == "n"  ) break;
                 }
                 else{
                     Console.WriteLine(" NO MORE ROUND");
-
                 }
 
-            } while (round < 3);
-
-
-            /*Coding challenge
-                1. implement a loop to play again if the player chooses to.
-                2. get the players name to print out the winners -- done --
-                3. implement the code to play 3 rounds. -- done -- 
-            */
+            } while (round < 3);   
 
         }//end of main
+
+        public static string GetUserName(){
+            Console.WriteLine("Please enter your name");
+            return Console.ReadLine();
+        }
     }
 }
