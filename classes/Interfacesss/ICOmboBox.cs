@@ -1,0 +1,3 @@
+interface IComboBox: ITextBox, IListBox{
+    
+}
