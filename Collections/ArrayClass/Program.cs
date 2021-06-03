@@ -23,8 +23,6 @@ namespace ArrayClass
             int[][] jaggedArray = new int[6][];
             // set the values of the  first array in the jagged array structure 
             jaggedArray[0] = new int[4] {1, 2, 3, 4};
-            
-
         }
     }
 }
