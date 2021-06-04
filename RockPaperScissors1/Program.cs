@@ -14,7 +14,9 @@ namespace RockPaperScissors1
             Console.WriteLine(rpsGame.WelcomeMessage());
             // bool successfulConversion = false;
             int playerChoiceInt;
-            string quitter = "n";
+            int computerChoice;
+            string quitter;
+
 
             //get players info
             rpsGame.getPlayerName(player1);
@@ -22,66 +24,34 @@ namespace RockPaperScissors1
             //play the game
             do
             {
-                //start first to 2 wins game here
                 int computerRoundWins = 0;
                 int playerRoundWins = 0;
                 int tieRounds = 0;
+                //start first to 2 wins game here
                 while (computerRoundWins < 2 && playerRoundWins < 2)
                 {
 
                     // get  player choice 
-                        playerChoiceInt = PlayerChoice.getPlayerChoice();
+                    playerChoiceInt = PlayerChoice.getPlayerChoice();
                     
-
-                    Random rand = new Random();
-                    //get a random number 1,2, or 3.
-                    int computerChoice = rand.Next(1, Enum.GetNames(typeof(RpsChoice)).Length + 1);
+                    // get computer choice
+                    computerChoice = PlayerChoice.getComputerChoice();
 
                     //print the choices.
-                    Console.WriteLine($"{player1}'s choice is {(RpsChoice)playerChoiceInt}");
+                    Console.WriteLine($"{player1.GetFullAddress()}'s choice is {(RpsChoice)playerChoiceInt}");
                     Console.WriteLine($"the computers choice is {(RpsChoice)computerChoice}");
 
                     //check who won.
-                    if ((playerChoiceInt == 1 && computerChoice == 2) ||
-                         (playerChoiceInt == 2 && computerChoice == 3) ||
-                         (playerChoiceInt == 3 && computerChoice == 1))
-                    {
-                        Console.WriteLine("Computer Wins this round");
-                        // computerRoundWins++;
-                        computerRoundWins = computerRoundWins + 1;
-                    }
-                    else if (playerChoiceInt == computerChoice)
-                    {
-                        Console.WriteLine("Tie Round!!");
-                        tieRounds++;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"{player1} wins this round!!!");
-                        playerRoundWins++;
-                    }
-
+                    computerRoundWins = Score.ComputerWin(playerChoiceInt, computerChoice, computerRoundWins);
+                    tieRounds = Score.TieScore(playerChoiceInt, computerChoice, tieRounds);
+                    playerRoundWins = Score.PlayerWin(playerChoiceInt, computerChoice, player1, playerRoundWins);
 
                 }//end of rounds
 
-                if (computerRoundWins == 2)
-                {
-                    Console.WriteLine($"\n\tIt looks like the computer won this game. Better luck next time!\n");
-                }
-                else if (playerRoundWins == 2)
-                {
-                    Console.WriteLine($"\n\tYou did it! You won against the computer!\n");
-                }
+                Score.GameResult( computerRoundWins ,  playerRoundWins);
 
                 //see if the player wants to play again
-                do
-                {
-                    Console.WriteLine($"Hey, {player1}. Would you like to play again?\n I'll keep asking till you answer me!!\n enter Y or N");
-                    quitter = Console.ReadLine();
-                    quitter = quitter.Trim().ToLower();
-                    //Console.WriteLine($"The choice to play or not is => {quitter}");
-                } //while (quitter.CompareTo("y") != 0 && quitter.CompareTo("n") != 0);
-                while (quitter != "y" && quitter != "n");
+                quitter = Score.PlayAgain(player1);
 
             } while (quitter == "y");
 

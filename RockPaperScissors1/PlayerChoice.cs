@@ -25,5 +25,13 @@ namespace RockPaperScissors1
 
             return  playerChoiceInt;
         }
+
+        public static int  getComputerChoice(){
+            Random rand = new Random();
+            //get a random number 1,2, or 3.
+            int computerChoice = rand.Next(1, Enum.GetNames(typeof(Program.RpsChoice)).Length + 1);
+
+            return  computerChoice;
+        }
     }
 }

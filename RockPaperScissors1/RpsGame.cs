@@ -22,12 +22,7 @@ namespace RockPaperScissors1
             player.Lname = Console.ReadLine();
             string fullAddress = player.GetFullAddress();
             Console.WriteLine($"Welcome to the gameZone, {fullAddress} .");
-
             Console.WriteLine($"Please make a choice.");
-            
-
         }
-        
-
     }
 }

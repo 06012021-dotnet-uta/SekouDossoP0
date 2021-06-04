@@ -41,9 +41,9 @@ namespace RockPaperScissors1
 
         public override string GetFullAddress()
         {
-            string fullAddy = $"{Fname} {Lname}\n{Street}\n{City}, {State}.";
+            string fullName = $"{Fname} {Lname}";
 
-            return fullAddy;
+            return fullName;
         }
 
 
