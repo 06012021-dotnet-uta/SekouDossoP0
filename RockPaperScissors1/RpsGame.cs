@@ -6,20 +6,28 @@ namespace RockPaperScissors1
     {
         public string WelcomeMessage()
         {
-            string welcome = "\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.";
+            // string welcome = "\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.";
+            string welcome = "\tWelcome to Rock-Paper-Scissors!";
             return welcome;
         }
-
-        public string getPlayerName(string playerInput)
+        public void getPlayerName(PlayerDerivedClass player)
         {
-            //Console.WriteLine(playerInput);
-            playerInput = playerInput.Trim();
-            if (playerInput.Length > 20 || playerInput.Length < 1)
+            Console.WriteLine("Please enter your first name");
+            player.Fname = Console.ReadLine();
+            if (player.Fname == null)
             {
-                return null;
+                Console.WriteLine("\n\nreturned null\n\n");
             }
-            return playerInput;
+            Console.WriteLine($"Whatsa haps, {player.Fname}? Please enter your last name");
+            player.Lname = Console.ReadLine();
+            string fullAddress = player.GetFullAddress();
+            Console.WriteLine($"Welcome to the gameZone, {fullAddress} .");
+
+            Console.WriteLine($"Please make a choice.");
+            
+
         }
+        
 
     }
 }
