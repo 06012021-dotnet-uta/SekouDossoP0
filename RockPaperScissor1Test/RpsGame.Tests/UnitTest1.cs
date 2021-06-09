@@ -29,6 +29,9 @@ namespace RpsGame.Tests
             // Assert
                 Assert.Equal("\tWelcome to Rock-Paper-Scissors!" , welcomeMessage);
 
+            // just a commit test case
+            // just a commit test case
+
 
         }
 
