@@ -22,13 +22,18 @@ namespace RpsGame.Tests
         public void TestingWelcomeMessageReturnCorrectMessage()
         {
             // arrange
+<<<<<<< HEAD
                 IRpsGame welcome = new RockPaperScissors1.RpsGame.WelcomeMessage();
+=======
+                IRpsGame welcome = new RockPaperScissors1.RpsGame();
+>>>>>>> main
                 // "\tWelcome to Rock-Paper-Scissors!";
             // Act 
                 string welcomeMessage = welcome.WelcomeMessage();
             // Assert
                 Assert.Equal("\tWelcome to Rock-Paper-Scissors!" , welcomeMessage);
 
+<<<<<<< HEAD
             // just a commit test case
             // just a commit test case
 
@@ -47,5 +52,9 @@ namespace RpsGame.Tests
                 
         }
 
+=======
+
+        }
+>>>>>>> main
     }
 }

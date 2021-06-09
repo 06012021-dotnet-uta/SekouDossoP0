@@ -1,0 +1,3 @@
+interface IControl{
+    void Paint();
+}
