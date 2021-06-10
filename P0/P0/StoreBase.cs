@@ -6,25 +6,21 @@ namespace P0
     public class StoreBase
     {
         // instance vars
-        string location;
+        Location location;
         string storeName;
         // static inventory; // really need more explaintion
 
         // constructor
-        public StoreBase(string location, string storeName ){
-            this.location = location;
+        public StoreBase(string storeName, Location location ){
             this.storeName = storeName; 
+            this.location = location;
+           
         }
 
         // instance methods
-        public string Location{
+        public Location Location{
             get{ return location;}
-            set{
-                while(value.Length < 1 ){
-                    throw new InvalidOperationException ("location title should be atleast 1 character.");
-                }
-                location = value;
-            }
+            set{location = value;}
         }
         public string StoreName{
             get{ return storeName;}
@@ -35,6 +31,7 @@ namespace P0
                 storeName = value;
             }
         }
+        
         
         // class methode
         

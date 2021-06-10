@@ -5,7 +5,7 @@ namespace P0
         // class var 
         // instance var 
         // constructor
-        public Store(string location, string storeName) : base(location, storeName){
+        public Store(string storeName, Location location) : base(storeName, location){
             
         }
         // instance methods 

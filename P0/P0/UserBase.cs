@@ -21,28 +21,34 @@ namespace P0
         public string FirstName{
             get{ return firstName;}
             set{
-                while(value.Length < 1 || value.Length >15){
-                    throw new InvalidOperationException ("firstName should be atleast 1 character and less than 15 characters.");
+                if(value.Length < 1 || value.Length >15){
+                    Console.WriteLine("firstName should be atleast 1 character and less than 15 characters.");
+                    firstName = Console.ReadLine();
+                }else{
+                    firstName = value;
                 }
-                firstName = value;
             }
         }
         public string LastName{
             get{ return lastName;}
             set{
-                while(value.Length < 1 || value.Length >15){
-                    throw new InvalidOperationException ("lastName should be atleast 1 character and less than 15 characters.");
-                }
+                if(value.Length < 1 || value.Length >15){
+                    Console.WriteLine("lastName should be atleast 1 character and less than 15 characters.");
+                    lastName = Console.ReadLine();
+                }else{
                 lastName = value;
+                }
             }
         }
         public string PassWord{
             get{ return passWord;}
             set{
-                while(value.Length < 3){
-                    throw new InvalidOperationException ("passWord should be atleast 1 character.");
+                if(value.Length < 3){
+                    Console.WriteLine("passWord should be atleast 3 characters.");
+                    passWord = Console.ReadLine();
+                }else{
+                    passWord = value;
                 }
-                passWord = value;
             }
         }
         // class methode
