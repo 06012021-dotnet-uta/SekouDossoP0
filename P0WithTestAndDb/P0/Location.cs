@@ -7,14 +7,14 @@ namespace P0
         // instance var 
         string locationName;
         string city;
-        string state;
+        string locationState;
         int zipCode;
 
         // constructor
-        public Location(string locationName, string city, string state, int zipCode){
+        public Location(string locationName, string city, string locationState, int zipCode){
             this.locationName = locationName;
             this.city = city;
-            this.state = state;
+            this.LocationState = locationState;
             this.zipCode = zipCode;
         }
         // instance methods 
@@ -36,13 +36,13 @@ namespace P0
                 city = value;
             }
         }
-        public string State {
-            get{ return state;}
+        public string LocationState {
+            get{ return locationState;}
             set{
                 while(value.Length < 1 ){
-                    throw new InvalidOperationException ("state should be atleast 1 character.");
+                    throw new InvalidOperationException ("locationState should be atleast 1 character.");
                 }
-                state = value;
+                locationState = value;
             }
         }
         public int ZipCode{
@@ -54,10 +54,6 @@ namespace P0
                 zipCode = value;
             }
         }
-        // override methods
-	  // interface methods
-        // class methods
-
-
+       
     }
 }

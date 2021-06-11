@@ -1,23 +1,40 @@
 using System;
+using System.Collections.Generic;
+
 namespace P0
 {
-    public class Order : OrderBase
+    public class Order
     {
         // class var 
-        static  int totalOrderNumber;
-        Location storeLocation;
-        Product product; 
-    
+        List<Order> orderList;
         // instance var 
+        DateTime orderDate; 
+        User user;
+        Location location;
         // constructor
-        public Order(int orderNumber, DateTime orderDate, User user, Product product, Location storeLocation) : base(orderNumber, orderDate, user){
-            this.product = product;
-            this.storeLocation = storeLocation;
-           totalOrderNumber++;
+        public Order(DateTime orderDate, User user, Location location){
+            this.orderDate = orderDate;
+            this.user = user;
+            this.location = location;
+            orderList.Add(this);
         }
-        // instance methods 
+        // instance methods
+        // getter and setters 
+        public DateTime OrderDate {
+            get{ return orderDate;} 
+            set{ orderDate = value;}
+        }
+        public User User{
+            get { return user;}
+            set { user = value;}
+        }
+        public Location Location{
+            get { return location;}
+            set { location = value;}
+        } 
         // override methods
-	    // interface methods
-        // class methods 
+	  // interface methods
+        // class methods
+
     }
 }

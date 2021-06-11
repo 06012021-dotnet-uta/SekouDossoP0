@@ -7,25 +7,27 @@ namespace P0
         // instance var 
         // constructor
         
-        public User(string firstName, string lastName, string passWord) : base( firstName,  lastName, passWord){
+        public User(string firstName, string lastName, string email, string userPassWord) : base( firstName,  lastName, email, userPassWord){
 
         }
         // instance methods
 
             // override interface methods
             public User Register(){
-                Console.WriteLine("Please enter your first name");
+                Console.WriteLine("Please enter your first name: ");
                 this.FirstName = Console.ReadLine();
-                Console.WriteLine("Please enter your last name");
+                Console.WriteLine("Please enter your last name: ");
                 this.LastName = Console.ReadLine();
-                Console.WriteLine("Please enter your passWord");
-                this.PassWord = Console.ReadLine();
+                Console.WriteLine("Please enter your email: ");
+                this.Email = Console.ReadLine(); 
+                Console.WriteLine("Please enter your userPassWord: ");
+                this.UserPassWord = Console.ReadLine();
                 
-                User newUser = new User(FirstName, LastName, PassWord);
+                User newUser = new User(FirstName, LastName, Email, UserPassWord);
                 return newUser;
             }
 
-            public string DeleteAccount(string firstName, string lastName, string passWord){
+            public string DeleteAccount(string firstName, string lastName, string userPassWord){
                return $"{firstName} {lastName} your account have been deleted.";
             }
 

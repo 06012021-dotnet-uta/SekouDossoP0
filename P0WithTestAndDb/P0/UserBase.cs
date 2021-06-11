@@ -8,13 +8,15 @@ namespace P0
         // instance variables
         string firstName;
         string lastName;
-        string passWord;
+        string email;
+        string userPassWord;
 
         // constructor
-        public UserBase(string firstName, string lastName, string passWord){
+        public UserBase(string firstName, string lastName, string email, string userPassWord){
             this.firstName = firstName;
-            this.lastName = lastName; 
-            this.passWord = passWord;
+            this.lastName = lastName;
+            this.email = email; 
+            this.userPassWord = userPassWord;
         }
 
         // instance methods
@@ -40,14 +42,25 @@ namespace P0
                 }
             }
         }
-        public string PassWord{
-            get{ return passWord;}
+        public string Email{
+            get{ return email;}
+            set{
+                if(value.Length < 1 ){
+                    Console.WriteLine("email should be atleast 1 character.");
+                    lastName = Console.ReadLine();
+                }else{
+                email = value;
+                }
+            }
+        }
+        public string UserPassWord{
+            get{ return userPassWord;}
             set{
                 if(value.Length < 3){
-                    Console.WriteLine("passWord should be atleast 3 characters.");
-                    passWord = Console.ReadLine();
+                    Console.WriteLine("userPassWord should be atleast 3 characters.");
+                    userPassWord = Console.ReadLine();
                 }else{
-                    passWord = value;
+                    userPassWord = value;
                 }
             }
         }

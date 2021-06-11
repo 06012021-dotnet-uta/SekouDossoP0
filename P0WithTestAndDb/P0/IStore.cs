@@ -3,6 +3,6 @@ namespace P0
 {
     interface IStore
     {
-        string Inventory();
+           string Inventory();
     }
 }

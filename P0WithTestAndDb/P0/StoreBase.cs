@@ -6,8 +6,8 @@ namespace P0
     public class StoreBase
     {
         // instance vars
-        Location location;
         string storeName;
+        Location location;
         // static inventory; // really need more explaintion
 
         // constructor
@@ -25,9 +25,9 @@ namespace P0
         public string StoreName{
             get{ return storeName;}
             set{
-                while(value.Length < 1 ){
-                    throw new InvalidOperationException ("store name should be atleast 1 character and less than 15 characters.");
-                }
+                // while(value.Length < 1 ){
+                //     throw new InvalidOperationException ("store name should be atleast 1 character and less than 15 characters.");
+                // }
                 storeName = value;
             }
         }
