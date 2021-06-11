@@ -9,14 +9,14 @@ namespace P0
         string productDescription;
         int productPrice;
         bool disponibility;
-        Store store;
+        // Store store;
         // constructor
-        public ProductBase(string productName, string productDescription, int productPrice,  bool disponibility, Store store){
+        public ProductBase(string productName, string productDescription, int productPrice,  bool disponibility){
             this.productName = productName;
             this.productDescription = productDescription;
             this.productPrice = productPrice;
             this.disponibility = true;
-            this.store = store;
+            // this.store = store;
         }
 
         // getter and setter
@@ -53,9 +53,9 @@ namespace P0
                 disponibility = value;
             }
         }
-        public Store Store{
-            get{ return store;}
-            set{store = value;}
-        }
+        // public Store Store{
+        //     get{ return store;}
+        //     set{store = value;}
+        // }
     }
 }
