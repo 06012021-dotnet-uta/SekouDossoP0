@@ -11,9 +11,6 @@ namespace P0DbContext
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public int? ProductPrice { get; set; }
-        public bool? Dispinibility { get; set; }
-        public int? StoreId { get; set; }
-
-        public virtual Store Store { get; set; }
+        public bool Dispinibility { get; set; }
     }
 }

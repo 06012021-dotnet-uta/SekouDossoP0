@@ -18,8 +18,12 @@ namespace P0DbContext
         }
 
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderProduct> OrderProducts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductLocation> ProductLocations { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<StoreProduct> StoreProducts { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -60,28 +64,66 @@ namespace P0DbContext
                 entity.Property(e => e.ZipCode).HasColumnName("zipCode");
             });
 
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.Property(e => e.OrderId).HasColumnName("orderId");
+
+                entity.Property(e => e.LocationId).HasColumnName("locationId");
+
+                entity.Property(e => e.OderDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("oderDate");
+
+                entity.Property(e => e.UserId).HasColumnName("userId");
+
+                entity.HasOne(d => d.Location)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.LocationId)
+                    .HasConstraintName("FK__Orders__location__19DFD96B");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK__Orders__userId__18EBB532");
+            });
+
+            modelBuilder.Entity<OrderProduct>(entity =>
+            {
+                entity.Property(e => e.OrderProductId).HasColumnName("orderProductId");
+
+                entity.Property(e => e.OrderId).HasColumnName("orderId");
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+            });
+
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.Property(e => e.Dispinibility)
-                    .IsRequired()
-                    .HasDefaultValueSql("((1))");
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+
+                entity.Property(e => e.Dispinibility).HasColumnName("dispinibility");
 
                 entity.Property(e => e.ProductDescription)
                     .IsRequired()
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("productDescription");
 
                 entity.Property(e => e.ProductName)
                     .IsRequired()
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("productName");
 
-                entity.Property(e => e.StoreId).HasColumnName("storeId");
+                entity.Property(e => e.ProductPrice).HasColumnName("productPrice");
+            });
 
-                entity.HasOne(d => d.Store)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Products__storeI__4222D4EF");
+            modelBuilder.Entity<ProductLocation>(entity =>
+            {
+                entity.Property(e => e.ProductLocationId).HasColumnName("productLocationId");
+
+                entity.Property(e => e.LocationId).HasColumnName("locationId");
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
             });
 
             modelBuilder.Entity<Store>(entity =>
@@ -99,11 +141,31 @@ namespace P0DbContext
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.Stores)
                     .HasForeignKey(d => d.LocationId)
-                    .HasConstraintName("FK__Stores__location__3E52440B");
+                    .HasConstraintName("FK__Stores__location__619B8048");
+            });
+
+            modelBuilder.Entity<StoreProduct>(entity =>
+            {
+                entity.Property(e => e.StoreProductId).HasColumnName("storeProductId");
+
+                entity.Property(e => e.ProductId).HasColumnName("productId");
+
+                entity.Property(e => e.StoreId).HasColumnName("storeId");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
+                entity.HasIndex(e => e.Email, "UQ__Users__AB6E61642F0CB2D1")
+                    .IsUnique();
+
+                entity.Property(e => e.UserId).HasColumnName("userId");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("email");
+
                 entity.Property(e => e.FisrtName)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -119,7 +181,8 @@ namespace P0DbContext
                 entity.Property(e => e.UserPassWord)
                     .IsRequired()
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("userPassWord");
             });
 
             OnModelCreatingPartial(modelBuilder);
