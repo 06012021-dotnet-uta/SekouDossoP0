@@ -32,10 +32,12 @@ namespace P0
             Console.WriteLine("\nUser order history");
             StoreOrderHistory.OrderHistory(1);
             // view location order history 
+            Console.WriteLine("\nStore Location order history");
+            LocationOrderHistory.locationOrderHistory();
             // view location inventory 
             // log out 
-            
-            
+
+
             // users
             // User user = new User("Sekou", "Dosso", "sekou@gmail.com", "qwer");
             // User user1 = new User("Alex", "Max", "mark@gmail.com", "1234");
