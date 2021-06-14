@@ -9,12 +9,14 @@ namespace P0
 {
     class Register
     {
-        public static void CreateAccount(int x)
+        public static void CreateAccount(int selection)
         {
             P0DBContext context = new P0DBContext();
             string firstName = "", lastName = "", email = "", userPassWord = "";
-            if (x != 1)
+            if (selection == 2)
             {
+                Console.WriteLine($"Please {(Choice.RegisterOrLogin)selection} to start your shopping.\n");
+
                 int userCount11 =-1;
                 do
                 {
@@ -52,12 +54,13 @@ namespace P0
             }
             else
             {
+                Console.WriteLine($" Please {(Choice.RegisterOrLogin)selection} to start your shopping.\n");
                 int result = -1;
                 do 
                 { 
                     Console.WriteLine("Please enter your email: ");
                     email = Console.ReadLine();
-                    var rightEmail = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().Email;
+                    string rightEmail = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().Email;
                     if (email != rightEmail) Console.WriteLine($"Wrong email.");
                     else result++;
                 } while (result < 1);

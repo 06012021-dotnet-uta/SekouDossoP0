@@ -13,15 +13,12 @@ namespace P0
             int counter = 1; 
             string logOut = "Countinue";
             while (counter > 0 ){
-                do {
                         P0DBContext context = new P0DBContext();
                         Console.WriteLine("Welcome to Shopping Bay\n");
-                        
-                        // register or login
-                        int selection = Choice.RegisterLogin();
-                        if (selection == 2) Console.WriteLine($" Please {(Choice.RegisterOrLogin)selection} to start your shopping.\n");
-                        else Console.WriteLine($"Please {(Choice.RegisterOrLogin)selection} to start your shopping.\n");
-                        Register.CreateAccount(selection);
+                        int selection = Choice.RegisterLogin(); // select register or login
+                        Register.CreateAccount(selection); // register or login
+                do {
+                        //P0DBContext context = new P0DBContext();
 
                         // main memu 
                         selection = Choice.Menu();
@@ -31,6 +28,13 @@ namespace P0
                 }while(logOut != "QUITTER");
 
             }
+
+        }
+    }
+}
+
+
+
             // Console.WriteLine($" You selected : {(Choice.MainMenu)selection}.\n");
 
             // view location inventory 
@@ -86,7 +90,3 @@ namespace P0
             // int selectedStore = User.StoreSelection();
             // Console.WriteLine($"Please start your shopping at {(StoreChoice.StoreList)selectedStore}");
             // select * from products where x.name == (StoreChoice.StoreList)selectedStore
-
-        }
-    }
-}
