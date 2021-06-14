@@ -9,6 +9,7 @@ namespace P0DbContext
     {
         public Location()
         {
+            Orders = new HashSet<Order>();
             Stores = new HashSet<Store>();
         }
 
@@ -18,6 +19,7 @@ namespace P0DbContext
         public string LocationState { get; set; }
         public int ZipCode { get; set; }
 
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Store> Stores { get; set; }
     }
 }

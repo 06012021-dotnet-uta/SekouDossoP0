@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 namespace P0
 {
     public class User : UserBase, IUser
@@ -14,15 +15,7 @@ namespace P0
 
             // override interface methods
             public User Register(){
-                Console.WriteLine("Please enter your first name: ");
-                this.FirstName = Console.ReadLine();
-                Console.WriteLine("Please enter your last name: ");
-                this.LastName = Console.ReadLine();
-                Console.WriteLine("Please enter your email: ");
-                this.Email = Console.ReadLine(); 
-                Console.WriteLine("Please enter your userPassWord: ");
-                this.UserPassWord = Console.ReadLine();
-                
+           
                 User newUser = new User(FirstName, LastName, Email, UserPassWord);
                 return newUser;
             }
