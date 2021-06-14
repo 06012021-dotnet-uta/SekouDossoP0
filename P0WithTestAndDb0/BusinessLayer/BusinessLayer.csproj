@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <!-- <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" /> -->
+    <!-- <ProjectReference Include="..\P0.Tests\p0.Tests.csproj" /> -->
+    <!-- <ProjectReference Include="..\P0\P0.csproj" /> -->
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
