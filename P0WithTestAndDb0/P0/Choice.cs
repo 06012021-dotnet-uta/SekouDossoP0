@@ -82,7 +82,7 @@ namespace P0
 
         public static int Menu()
         {
-            Console.WriteLine("Please make a selection.");
+            Console.WriteLine("\nPlease make a selection.");
             int inputInt = -1;
             bool successfulConversion = false;
             do

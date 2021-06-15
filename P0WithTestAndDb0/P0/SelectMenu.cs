@@ -22,6 +22,7 @@ namespace P0
                     break;
                 case 3: // LocationInventory = 3
                     Console.WriteLine("Location Inventory");
+                    Inventory.LocationInventory();
                     break;
                 case 4: // StartShopping = 4
                  // select a store 
