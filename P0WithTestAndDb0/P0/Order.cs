@@ -6,7 +6,7 @@ namespace P0
     public class Order
     {
         // class var 
-        List<Order> orderList;
+        // List<Order> orderList;
         // instance var 
         DateTime orderDate; 
         User user;
@@ -16,7 +16,7 @@ namespace P0
             this.orderDate = orderDate;
             this.user = user;
             this.location = location;
-            orderList.Add(this);
+            // orderList.Add(this);
         }
         // instance methods
         // getter and setters 

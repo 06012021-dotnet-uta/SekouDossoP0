@@ -22,9 +22,12 @@ namespace P0
                     var orderProducts = context.OrderProducts.Where(x => x.OrderId == order.OrderId).ToList();
                     foreach (var orderProduct in orderProducts)
                     {
-                        var product = context.Products.Where(x => x.ProductId == orderProduct.OrderId).FirstOrDefault();
-                        Console.WriteLine($"order date : {order.OderDate}");
-                        Console.WriteLine($"product    : {product.ProductName} -- {product.ProductDescription} -- price: {product.ProductPrice}$");
+                        var product = context.Products.Where(x => x.ProductId == orderProduct.ProductId).FirstOrDefault();
+                        Console.WriteLine($"\norder date    : {order.OderDate}");
+                        Console.WriteLine($"product       : {product.ProductName} --product description: {product.ProductDescription} -- price: ${product.ProductPrice}");
+                        Console.WriteLine($"quantity sold : {orderProduct.OrderProductQuantity}");
+                        Console.WriteLine($"Total Cost    : ${orderProduct.OrderProductQuantity * product.ProductPrice}");
+
                     }
                 }
             }

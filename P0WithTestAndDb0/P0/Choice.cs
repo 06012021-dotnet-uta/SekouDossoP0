@@ -11,6 +11,7 @@ namespace P0
         // register or login choice
         public static void RegisterLogin()
         {
+            Console.WriteLine("Welcome to Shopping Bay\n");
             Console.WriteLine("Please login or register for new user.");
             int inputInt = -1;
             bool successfulConversion = false;

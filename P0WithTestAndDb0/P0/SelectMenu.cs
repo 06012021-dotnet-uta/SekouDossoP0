@@ -32,52 +32,7 @@ namespace P0
                     Choice.Menu(registeredUserId);
                     break;
                 case 4: // StartShopping = 4
-                    Cart cart = new Cart();
-                 // select a store 
-                    // Console.WriteLine("Please Select a store. ");
-                    var selection = Choice.SelectStore();
-                    Console.WriteLine($"Welcom to {(Choice.StoreList)selection} store.\n");
-                    // display store's products
-                    DisplayProducts.Display(selection);
-                    int dicision = Choice.ShoppingOperation();
-
-                    switch(dicision)
-                    {
-                        case 1: // add product
-                            Console.WriteLine($"Please Enter the excate name of a product.\n");
-                            string input = Console.ReadLine();
-                            var product = context.Products.Where(x => x.ProductName == input).FirstOrDefault();
-                            if(product.ProductName != input) Console.WriteLine("Please enter the exact name of a product.");
-                            else {
-                                Console.WriteLine($"Please Enter the quantity of product.\n");
-                                input = Console.ReadLine();
-                                int quantity = Int32.Parse(input);
-                                cart.AddProduct(new Product(product.ProductName));
-                                // checkout
-                                var newOrder = new P0DbContext.Order();
-                                newOrder.UserId = registeredUserId;
-                                newOrder.LocationId = selection;
-                                newOrder.OderDate = DateTime.Today;
-                                context.Add(newOrder);
-                                context.SaveChanges();
-
-                                var newOrderProduct = new P0DbContext.OrderProduct();
-                                newOrderProduct.ProductId = product.ProductId;
-                                newOrderProduct.OrderId = context.Orders.ToList().LastOrDefault().OrderId;                               
-                                newOrderProduct.OrderProductQuantity = quantity;
-                                //newUser = MapperClassAppToDb.AppUserToDbUser(newUser);
-                                context.Add(newOrderProduct); 
-                                context.SaveChanges();
-                                Choice.Menu(registeredUserId);
-                            }
-                        break;
-                        case 2: // exit
-                            Choice.Menu(registeredUserId);
-                        break;
-                        
-                    }
-                    //Console.WriteLine("Select a product");
-                    //Console.WriteLine("Enter the quantity");
+                    Shopping.ShoppingProcess(registeredUserId);
                     Choice.Menu(registeredUserId);
 
                     break;

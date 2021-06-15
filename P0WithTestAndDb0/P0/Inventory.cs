@@ -26,7 +26,7 @@ namespace P0
                     var products = context.Products.Where(x => x.ProductId == storeProduct.StoreProductId).ToList();
                     foreach(var p in products)
                     {
-                        Console.WriteLine($"productName: {p.ProductName}  quantity: {storeProduct.StoreProductQuantity}");
+                        Console.WriteLine($"productName: {p.ProductName}  quantity: {storeProduct.StoreProductQuantity} Store: {store.StoreName}");
                     }
                 }
             }

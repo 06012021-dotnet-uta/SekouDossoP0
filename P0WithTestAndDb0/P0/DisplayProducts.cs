@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
+// using System.Linq;
 using P0DbContext;
 
 namespace P0
@@ -20,7 +20,7 @@ namespace P0
             var storeProducts = context.StoreProducts.Where(x => x.StoreId == y).ToList();
             foreach (var p in storeProducts) {
                 var product = context.Products.Where(x => x.ProductId == p.ProductId).FirstOrDefault();
-                Console.WriteLine($" {product.ProductName} : {product.ProductDescription} price: {product.ProductPrice}$");
+                Console.WriteLine($" Product name: {product.ProductName} -- product descrition: {product.ProductDescription} -- price: {product.ProductPrice}$");
             }
         }
 
