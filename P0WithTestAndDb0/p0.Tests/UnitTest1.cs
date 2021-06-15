@@ -95,6 +95,57 @@ namespace p0.Tests
             // // assert
             // Assert.Equal("Mark",registeredUser);
         //}
+        [Fact]// test1
+        public void CheckForUserFirsName() // 
+        {
+            // arrange
+                string userFisrtName = "";
+            // act 
+                userFisrtName = context.Users.ToList().FirstOrDefault().FisrtName;
+            // assert
+            Assert.Equal("Sekou",userFisrtName);
+        }
+        [Fact]// test1
+        public void CheckForUserLastName() // 
+        {
+            // arrange
+                string userLastName = "";
+            // act 
+                userLastName = context.Users.ToList().FirstOrDefault().LastName;
+            // assert
+            Assert.Equal("Dosso",userLastName);
+        }
+        [Fact]// test1
+        public void CheckForUserEmail() // 
+        {
+            // arrange
+                string userEmail = "";
+            // act 
+                userEmail = context.Users.ToList().FirstOrDefault().Email;
+            // assert
+            Assert.Equal("s@",userEmail);
+        }
+        
+        [Fact]// test1
+        public void CheckForUserPassWordLength() // 
+        {
+            // arrange
+                var userPasswordLength = 0;
+            // act 
+                userPasswordLength = context.Users.ToList().FirstOrDefault().UserPassWord.Length;
+            // assert
+            Assert.True(userPasswordLength > 2, "Excepted userPasswordLength to be greater than 2.");
+        }
+        [Fact]// test1
+        public void CheckForUseruniqueEmail() // 
+        {
+            // arrange
+                var user_email = "s@";
+            // act 
+                var userEmailCount = context.Users.Where(x => x.Email == user_email).ToList();
+            // assert
+            Assert.Equal(1, userEmailCount.Count());
+        }
       
     }
 }
