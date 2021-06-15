@@ -9,7 +9,7 @@ namespace P0
             Register = 2,//equivalent to 1
         }
         // register or login choice
-        public static int RegisterLogin()
+        public static void RegisterLogin()
         {
             Console.WriteLine("Please login or register for new user.");
             int inputInt = -1;
@@ -27,7 +27,9 @@ namespace P0
 
             } //while (!successfulConversion || (playerChoiceInt < 1 || playerChoiceInt > 3));
             while (!successfulConversion || !(inputInt > 0 && inputInt < 3));//both of hte above are valid.
-            return inputInt;
+            
+            // return inputInt;
+            Register.CreateAccount(inputInt);
         }
        
 
@@ -80,7 +82,7 @@ namespace P0
             Logout = 5, //equivalent to 5
         }
 
-        public static int Menu()
+        public static string Menu()
         {
             Console.WriteLine("\nPlease make a selection.");
             int inputInt = -1;
@@ -96,7 +98,10 @@ namespace P0
                     Console.WriteLine($"You inputted {inputInt}. That is not a valid choice.");
             }
             while (!successfulConversion || !(inputInt > 0 && inputInt < 6));
-            return inputInt;
+            
+            SelectMenu.SelectedMenu(inputInt); 
+
+            return "logout";
         }
 
 

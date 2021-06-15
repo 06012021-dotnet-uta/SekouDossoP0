@@ -10,28 +10,31 @@ namespace P0
     {
         static void Main(string[] args)
         {
-            int counter = 1; 
-            string logOut = "Countinue";
-            while (counter > 0 ){
-                        P0DBContext context = new P0DBContext();
-                        Console.WriteLine("Welcome to Shopping Bay\n");
-                        int selection = Choice.RegisterLogin(); // select register or login
-                        Register.CreateAccount(selection); // register or login
-                do {
-                        //P0DBContext context = new P0DBContext();
-
-                        // main memu 
-                        selection = Choice.Menu();
-                        if (selection != 5) SelectMenu.SelectedMenu(selection); 
-                        else logOut = "QUITTER";
-
-                }while(logOut != "QUITTER");
-
-            }
-
+            Console.WriteLine("Welcome to Shopping Bay\n");
+            P0DBContext context = new P0DBContext();
+            Choice.RegisterLogin(); // select register or login
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,21 +9,24 @@ namespace P0
 {
     class UserOrderHistory
     {
-        public static void OrderHistory()
+        public static void UserOrderHistories()
         {
             Console.WriteLine("\nUser order history");
             int user_id = UserInfo();
             Console.WriteLine("************ Here is your order history *************\n");
             P0DBContext context = new P0DBContext();
             var orders = context.Orders.Where(x => x.UserId == user_id).ToList();
-            foreach (var order in orders)
-            {
-                var orderProducts = context.OrderProducts.Where(x => x.OrderId == order.OrderId).ToList();
-                foreach (var orderProduct in orderProducts)
+            if(orders.Count <1) Console.WriteLine("You have no order history.");
+            else{
+                foreach (var order in orders)
                 {
-                    var product = context.Products.Where(x => x.ProductId == orderProduct.OrderId).FirstOrDefault();
-                    Console.WriteLine($"order date : {order.OderDate}");
-                    Console.WriteLine($"product    : {product.ProductName} -- {product.ProductDescription} -- price: {product.ProductPrice}$");
+                    var orderProducts = context.OrderProducts.Where(x => x.OrderId == order.OrderId).ToList();
+                    foreach (var orderProduct in orderProducts)
+                    {
+                        var product = context.Products.Where(x => x.ProductId == orderProduct.OrderId).FirstOrDefault();
+                        Console.WriteLine($"order date : {order.OderDate}");
+                        Console.WriteLine($"product    : {product.ProductName} -- {product.ProductDescription} -- price: {product.ProductPrice}$");
+                    }
                 }
             }
         }

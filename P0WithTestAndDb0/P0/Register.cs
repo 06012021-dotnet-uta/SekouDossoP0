@@ -24,16 +24,16 @@ namespace P0
                     {
                         Console.WriteLine("Please enter your first name: ");
                         firstName = Console.ReadLine();
-                        if (firstName.Length < 1) Console.WriteLine(" First name must be atleast 1 character. ");
+                        if (firstName.Length < 1) Console.WriteLine("First name must be atleast 1 character. ");
                         Console.WriteLine("Please enter your last name: ");
                         lastName = Console.ReadLine();
-                        if (lastName.Length < 1) Console.WriteLine(" Last name must be atleast 1 character. ");
+                        if (lastName.Length < 1) Console.WriteLine("Last name must be atleast 1 character. ");
                         Console.WriteLine("Please enter your email: ");
                         email = Console.ReadLine();
-                        if (email.Length < 1) Console.WriteLine(" Email must be atleast 1 character. ");
+                        if (email.Length < 1) Console.WriteLine("Email must be atleast 1 character. ");
                         Console.WriteLine("Please enter your userPassWord: ");
                         userPassWord = Console.ReadLine();
-                        if (userPassWord.Length < 3) Console.WriteLine(" UserPassWord must be atleast 1 character. ");
+                        if (userPassWord.Length < 3) Console.WriteLine("UserPassWord must be atleast 1 character. ");
                     }
                     while (firstName.Length < 1 || lastName.Length < 1 || email.Length < 1 || userPassWord.Length < 3);
                     var userCount = context.Users.Where(x => x.Email == email).ToList();
@@ -74,6 +74,8 @@ namespace P0
                 var registeredUser = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().FisrtName;
                 Console.WriteLine($"Heeeeey {registeredUser}  Please select a store.");
             }
+
+            Choice.Menu();
         }
     }
 }
