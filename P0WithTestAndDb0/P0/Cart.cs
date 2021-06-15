@@ -14,9 +14,9 @@ namespace P0
         }
         // instance methods 
         public void AddProduct(Product p){
-            if (cart.Count > 5){
-                Console.WriteLine("cart is full, Oreder may be rejected");
-            }
+            // if (cart.Count > 5){
+            //     Console.WriteLine("cart is full, Oreder may be rejected");
+            // }
             cart.Add(p);
         }
         // check cart contents

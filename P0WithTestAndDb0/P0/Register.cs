@@ -12,7 +12,8 @@ namespace P0
         public static void CreateAccount(int selection)
         {
             P0DBContext context = new P0DBContext();
-            string firstName = "", lastName = "", email = "", userPassWord = "";
+            string firstName = "", lastName = "", userPassWord = "", email = "";
+            int registeredUserId = 0;
             if (selection == 2)
             {
                 Console.WriteLine($"Please {(Choice.RegisterOrLogin)selection} to start your shopping.\n");
@@ -50,6 +51,7 @@ namespace P0
                 context.Add(newUser); 
                 context.SaveChanges();
                 var registeredUser = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().FisrtName;
+                registeredUserId = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().UserId;
                 Console.WriteLine($"Heeeeey {registeredUser}  Please select a from the menu.");
             }
             else
@@ -72,10 +74,11 @@ namespace P0
                     if (userPassWord != rightPassWord) Console.WriteLine($"Wrong password.");
                     } while (userPassWord != rightPassWord);
                 var registeredUser = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().FisrtName;
+                registeredUserId = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().UserId;
                 Console.WriteLine($"Heeeeey {registeredUser}  Please select a store.");
             }
 
-            Choice.Menu();
+            Choice.Menu(registeredUserId);
         }
     }
 }

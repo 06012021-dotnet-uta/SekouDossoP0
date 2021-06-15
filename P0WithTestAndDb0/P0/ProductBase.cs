@@ -11,11 +11,15 @@ namespace P0
         bool disponibility;
         // Store store;
         // constructor
+         public ProductBase(string productName){
+            this.ProductName = productName;
+            // this.store = store;
+        }
         public ProductBase(string productName, string productDescription, int productPrice,  bool disponibility){
-            this.productName = productName;
-            this.productDescription = productDescription;
-            this.productPrice = productPrice;
-            this.disponibility = true;
+            this.ProductName = productName;
+            this.ProductDescription = productDescription;
+            this.ProductPrice = productPrice;
+            this.Disponibility = true;
             // this.store = store;
         }
 

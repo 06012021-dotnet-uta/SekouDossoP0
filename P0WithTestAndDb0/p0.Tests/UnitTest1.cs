@@ -10,30 +10,26 @@ namespace p0.Tests
     public class UnitTest1
     {
         P0DBContext context = new P0DBContext();
-        // test10
-        // test9
-        // test8
-        // test7
-        // test6
+
         [Fact] // test5
         public void DisplayStoreProduct() // Berluti store has 2 products in their store
         {
-            //arrange
+            //Arrange
             int store_id = 1; // Berluti
-            // act
+            // Act
             int storeProducts = context.StoreProducts.Where(x => x.StoreId == store_id).ToList().Count();
-            // assert 
+            // Assert 
             Assert.Equal(2, storeProducts);
-        }// end LocationInventory
+        }// end 
 
         
         [Fact] // test4 
         public void LocationInventory() // Broklyn has no order history result
         {
-            //arrange
+            //Arrange
             int location_id = 1;
             int numberOfProduct = 0;
-            // act
+            // Act
             var storesCount = context.Stores.Where(x => x.LocationId == location_id).ToList().Count();
             var stores = context.Stores.Where(x => x.LocationId == location_id).ToList();
             foreach (var store in stores)
@@ -49,103 +45,109 @@ namespace p0.Tests
                         numberOfProduct += productQuantity;
                     }
                 }
-            }            // assert 
+            }            
+            // Assert 
             Assert.Equal(20, numberOfProduct);
-        }// end LocationInventory
+        }// end 
 
         [Fact]  // test3
         public void LocationOrderHistory() // Broklyn has no order history result
         {
-            //arrange
+            //Arrange
             int y = 2;
             string result = "";
-            // act
+            // Act
             var BrooklynOrders = context.Orders.Where(x => x.LocationId == y).ToList();
             if (BrooklynOrders.Count < 1) result = "This location have no order history.";
             else  result = "This location has an order history";
-            // assert 
+            // Assert 
             Assert.Equal("This location have no order history.", result);
-        }// end OrderHistory
+        }// end 
 
         [Theory] //test2
         [InlineData(1)]
         public void UserOrderHistory(int y)
         {
-            //arrange ('Mark','Moore', 'mark@gmail.com', '1234');
+            //Arrange 
             y = 1;
-            // act 
+            // Act 
             var orders = context.Orders.Where(x => x.UserId == y).ToList();
-            // assert
+            // Assert
             Assert.Equal(1 , orders.Count());
-        }
+        } // end
 
         // [Fact]// test1
         // public void CreateUser() // create a new user
         // {
-            // var newUser = new P0DbContext.User();
+        //     // Arrange
+        //     var newUser = new P0DbContext.User();
 
-            //     newUser.FisrtName = "Mark";
-            //     newUser.LastName = "Moore";
-            //     newUser.Email = "test@gmail.com";
-            //     newUser.UserPassWord = "1234";
-            //     context.Add(newUser); 
-            //     context.SaveChanges();
-            // // act 
-            //     var registeredUser = context.Users.ToList().Where(x => x.Email == "m@gmail.com").FirstOrDefault().FisrtName;
-            // // assert
-            // Assert.Equal("Mark",registeredUser);
-        //}
+        //         newUser.FisrtName = "Mark";
+        //         newUser.LastName = "Moore";
+        //         newUser.Email = "test@gmail.com";
+        //         newUser.UserPassWord = "1234";
+        //         context.Add(newUser); 
+        //         context.SaveChanges();
+        //     // Act 
+        //         var registeredUser = context.Users.ToList().Where(x => x.Email == "m@gmail.com").FirstOrDefault().FisrtName;
+        //     // Assert
+        //     Assert.Equal("Mark",registeredUser);
+        // } // end
+
         [Fact]// test1
         public void CheckForUserFirsName() // 
         {
-            // arrange
+            // Arrange
                 string userFisrtName = "";
-            // act 
+            // Act 
                 userFisrtName = context.Users.ToList().FirstOrDefault().FisrtName;
-            // assert
+            // Assert
             Assert.Equal("Sekou",userFisrtName);
-        }
+        } // end
+
         [Fact]// test1
         public void CheckForUserLastName() // 
         {
-            // arrange
+            // Arrange
                 string userLastName = "";
-            // act 
+            // Act 
                 userLastName = context.Users.ToList().FirstOrDefault().LastName;
-            // assert
+            // Assert
             Assert.Equal("Dosso",userLastName);
-        }
+        } // end
+
         [Fact]// test1
         public void CheckForUserEmail() // 
         {
-            // arrange
+            // Arrange
                 string userEmail = "";
-            // act 
+            // Act 
                 userEmail = context.Users.ToList().FirstOrDefault().Email;
-            // assert
+            // Assert
             Assert.Equal("s@",userEmail);
-        }
+        } // end
         
         [Fact]// test1
         public void CheckForUserPassWordLength() // 
         {
-            // arrange
+            // Arrange
                 var userPasswordLength = 0;
-            // act 
+            // Act 
                 userPasswordLength = context.Users.ToList().FirstOrDefault().UserPassWord.Length;
-            // assert
+            // Assert
             Assert.True(userPasswordLength > 2, "Excepted userPasswordLength to be greater than 2.");
-        }
+        } // end
+
         [Fact]// test1
         public void CheckForUseruniqueEmail() // 
         {
-            // arrange
+            // Arrange
                 var user_email = "s@";
-            // act 
+            // Act 
                 var userEmailCount = context.Users.Where(x => x.Email == user_email).ToList();
-            // assert
+            // Assert
             Assert.Equal(1, userEmailCount.Count());
-        }
+        } // end
       
     }
 }

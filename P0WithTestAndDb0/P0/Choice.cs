@@ -71,6 +71,25 @@ namespace P0
             AddProduct = 2,//equivalent to 2
             Dsquared2 = 3//equivalent to 3
         }
+        public static int ShoppingOperation()
+        {
+            Console.WriteLine("\nPlease make a selection.");
+            int inputInt = -1;
+            bool successfulConversion = false;
+            do
+            {
+                Console.WriteLine("1. addProduct\n2. exit");
+                string input = Console.ReadLine();
+                successfulConversion = Int32.TryParse(input, out inputInt);
+                if (inputInt > 3 || inputInt < 1)
+                    Console.WriteLine($"You inputted {inputInt}. That is not a valid choice.");
+                else if (!successfulConversion)
+                    Console.WriteLine($"You inputted {inputInt}. That is not a valid choice.");
+            }
+            while (!successfulConversion || !(inputInt > 0 && inputInt < 4));
+            return inputInt;
+
+        }
 
         // main menu 
         public enum MainMenu
@@ -82,7 +101,7 @@ namespace P0
             Logout = 5, //equivalent to 5
         }
 
-        public static string Menu()
+        public static string Menu(int registeredUserId )
         {
             Console.WriteLine("\nPlease make a selection.");
             int inputInt = -1;
@@ -99,7 +118,7 @@ namespace P0
             }
             while (!successfulConversion || !(inputInt > 0 && inputInt < 6));
             
-            SelectMenu.SelectedMenu(inputInt); 
+            SelectMenu.SelectedMenu(inputInt, registeredUserId); 
 
             return "logout";
         }
