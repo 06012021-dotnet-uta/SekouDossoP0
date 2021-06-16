@@ -42,6 +42,10 @@ namespace P0
                     Console.WriteLine("Bye bye");
                     Choice.RegisterLogin(); // select register or login
                     break;
+                case 6: // single order details
+                    OrderDetails.GetOrderId();
+                    Choice.Menu(registeredUserId);
+                break;
                 // default:
                 //     break;
             }

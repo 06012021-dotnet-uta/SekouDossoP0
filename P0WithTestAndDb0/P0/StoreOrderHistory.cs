@@ -10,7 +10,7 @@ namespace P0
     class StoreOrderHistory
     {
         /// <summary>
-        /// This will allow the User to see his order history
+        /// This will allow the User to see his order
         /// </summary>
         /// <param name="y"></param>
         public static void OrderHistory(int y)

@@ -115,6 +115,7 @@ namespace P0
             LocationInventory = 3, //equivalent to 3
             StartShopping = 4, //equivalent to 4
             Logout = 5, //equivalent to 5
+            SingleOrderDetails = 6,
         }
 
         /// <summary>
@@ -132,15 +133,15 @@ namespace P0
             bool successfulConversion = false;
             do
             {
-                Console.WriteLine("1. UserOrderHistory\n2. LocationOrderHistory\n3. LocationInventory\n4. StartShopping\n5. Logout ");
+                Console.WriteLine("\n1. UserOrderHistory\n2. LocationOrderHistory\n3. LocationInventory\n4. StartShopping\n5. Logout\n6. SingleOrderDetails ");
                 string input = Console.ReadLine();
                 successfulConversion = Int32.TryParse(input, out inputInt);
-                if (inputInt > 5 || inputInt < 1)
+                if (inputInt > 6 || inputInt < 1)
                     Console.WriteLine($"You inputted {inputInt}. That is not a valid choice.");
                 else if (!successfulConversion)
                     Console.WriteLine($"You inputted {inputInt}. That is not a valid choice.");
             }
-            while (!successfulConversion || !(inputInt > 0 && inputInt < 6));
+            while (!successfulConversion || !(inputInt > 0 && inputInt < 7));
             
             SelectMenu.SelectedMenu(inputInt, registeredUserId); 
 
