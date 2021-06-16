@@ -13,7 +13,7 @@ namespace P0DbContext
         }
 
         public int UserId { get; set; }
-        public string FisrtName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string UserPassWord { get; set; }

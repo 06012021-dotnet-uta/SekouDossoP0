@@ -46,6 +46,10 @@ namespace P0
                     OrderDetails.GetOrderId();
                     Choice.Menu(registeredUserId);
                 break;
+                case 7: // search user
+                    SearchUser.SearchUserByLastAndFirstName();
+                    Choice.Menu(registeredUserId);
+                break;
                 // default:
                 //     break;
             }

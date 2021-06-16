@@ -170,11 +170,11 @@ namespace P0DbContext
                     .IsUnicode(false)
                     .HasColumnName("email");
 
-                entity.Property(e => e.FisrtName)
+                entity.Property(e => e.FirstName)
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)
-                    .HasColumnName("fisrtName");
+                    .HasColumnName("firstName");
 
                 entity.Property(e => e.LastName)
                     .IsRequired()

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P0", "P0.csproj", "{C4930C8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p0.Tests", "..\p0.Tests\p0.Tests.csproj", "{F53ECB9A-C73E-424A-A914-C4BC326B24AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P0DbContext", "..\P0DbContext\P0DbContext.csproj", "{5E7FF8E0-F7B0-4822-B1F2-87CEFECFD7E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P0DbContext", "..\P0DbContext\P0DbContext.csproj", "{5E7FF8E0-F7B0-4822-B1F2-87CEFECFD7E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

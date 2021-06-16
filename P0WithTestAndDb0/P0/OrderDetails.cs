@@ -42,7 +42,7 @@ public class OrderDetails
             bool successfulConversion = false;
             do
             {
-                Console.WriteLine("Please enter order Id Number.");
+                Console.WriteLine("\nPlease enter order Id Number.");
                 string input = Console.ReadLine();
                 successfulConversion = Int32.TryParse(input, out inputInt);
                 //check if the user inputted a number but the numebr is out of bounds.
