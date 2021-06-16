@@ -7,7 +7,6 @@ namespace P0
     {
         public static User AppUserToDbUser(User user){
              User u = new User(){
-            // User u = new User(){
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,

@@ -9,6 +9,9 @@ namespace P0
 {
     class UserOrderHistory
     {
+        /// <summary>
+        /// Display User order history
+        /// </summary>
         public static void UserOrderHistories()
         {
             Console.WriteLine("\nUser order history");
@@ -33,6 +36,12 @@ namespace P0
                 }
             }
         }
+
+        /// <summary>
+        /// The User id is already send down to the Methods that need it.
+        /// but for ferefication the User will be ask to enter his email again.
+        /// </summary>
+        /// <returns></returns>
         public static int UserInfo()
         {
            P0DBContext context = new P0DBContext();

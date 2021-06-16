@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\P0DbContext\P0DbContext.csproj" />
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
   </ItemGroup>
 
 </Project>

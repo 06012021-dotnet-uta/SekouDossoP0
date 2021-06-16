@@ -9,6 +9,10 @@ namespace P0
 {
     class StoreOrderHistory
     {
+        /// <summary>
+        /// This will allow the User to see his order history
+        /// </summary>
+        /// <param name="y"></param>
         public static void OrderHistory(int y)
         {
             P0DBContext context = new P0DBContext();

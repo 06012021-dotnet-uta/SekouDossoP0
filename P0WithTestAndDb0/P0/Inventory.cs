@@ -9,6 +9,9 @@ namespace P0
 {
     class Inventory
     {
+        /// <summary>
+        /// Select a location to see it's inventory
+        /// </summary>
         public static void LocationInventory()
         {
             Console.WriteLine("\nFor inventory please select a location from ");

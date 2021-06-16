@@ -6,6 +6,14 @@ namespace P0
 {
     public class SelectMenu
     {
+        /// <summary>
+        /// Here is the main menu
+        /// The User should select unlimited time from this menu until he logout.
+        /// Once the user Logout the app will keeps running 
+        /// and the next User should login or register to start shopping.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="registeredUserId"></param>
         public static void SelectedMenu(int x, int registeredUserId)
         {
             P0DBContext context = new P0DBContext();
@@ -13,15 +21,10 @@ namespace P0
             switch (x)
             {
                 case 1: // UserOrderHistory = 1
-                    // Console.WriteLine("User Order History");
-                    // view user order history
-                    // Console.WriteLine("\nUser order history");
                     UserOrderHistory.UserOrderHistories();
                     Choice.Menu(registeredUserId);
                     break;
                 case 2: // LocationOrderHistory = 2
-                    // Console.WriteLine("Location Order History");
-                    // view location order history 
                     Console.WriteLine("\nStore Location order history");
                     LocationOrderHistory.locationOrderHistory();
                     Choice.Menu(registeredUserId);
@@ -34,7 +37,6 @@ namespace P0
                 case 4: // StartShopping = 4
                     Shopping.ShoppingProcess(registeredUserId);
                     Choice.Menu(registeredUserId);
-
                     break;
                 case 5: // Logout = 5
                     Console.WriteLine("Bye bye");

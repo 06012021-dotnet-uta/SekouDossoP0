@@ -9,6 +9,12 @@ namespace P0
 {
     class Register
     {
+        /// <summary>
+        /// After making a decision to Login or Register
+        /// Here the User will be prompt to login or register
+        /// The UserId will be send down from here for later need
+        /// </summary>
+        /// <param name="selection"></param>
         public static void CreateAccount(int selection)
         {
             P0DBContext context = new P0DBContext();
@@ -50,6 +56,7 @@ namespace P0
                 //newUser = MapperClassAppToDb.AppUserToDbUser(newUser);
                 context.Add(newUser); 
                 context.SaveChanges();
+                Console.WriteLine("\nYour account has been created.");
                 var registeredUser = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().FisrtName;
                 registeredUserId = context.Users.ToList().Where(x => x.Email == email).FirstOrDefault().UserId;
                 Console.WriteLine($"Heeeeey {registeredUser}  Please select a from the menu.");

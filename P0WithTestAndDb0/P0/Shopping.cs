@@ -6,10 +6,14 @@ namespace P0
 {
     public class Shopping
     {
+        /// <summary>
+        /// User should add a product to cart
+        /// The product available stock will be check before checkout
+        /// if stock is consistent  user can checkout 
+        /// </summary>
+        /// <param name="registeredUserId"></param>
         public static void ShoppingProcess(int registeredUserId){
             P0DBContext context = new P0DBContext();
-            // select a store 
-            // Console.WriteLine("Please Select a store. ");
             var selection = Choice.SelectStore();
             Console.WriteLine($"Welcom to {(Choice.StoreList)selection} store.\n");
             // display store's products
@@ -66,9 +70,10 @@ namespace P0
                 break;        
             }
         }
-        
-
-
+        /// <summary>
+        /// Get the product quantity that the user want to
+        /// </summary>
+        /// <returns></returns>
         public static int OQuantity( )
         {
             Console.WriteLine($"Please Enter the quantity of product.\n");

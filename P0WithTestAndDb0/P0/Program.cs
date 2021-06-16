@@ -10,14 +10,12 @@ namespace P0
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Welcome to Shopping Bay\n");
-            //P0DBContext context = new P0DBContext();
             /// <sammary>
             /// The user should login or register
-            /// then user will make a decision for UserOrderHistory, LocationOrderHistory, LocationInventory, StartShopping or Logout
-            ///  The app will keeps running after the user logout
+            /// Then user will make a decision for UserOrderHistory, LocationOrderHistory, LocationInventory, StartShopping or Logout
+            /// The app will keeps running after the user logout
             /// </summary>
-            Choice.RegisterLogin(); // select register or login
+            Choice.RegisterLogin(); 
         }
     }
 }

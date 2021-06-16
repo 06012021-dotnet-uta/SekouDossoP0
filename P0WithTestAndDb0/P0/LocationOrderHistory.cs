@@ -9,6 +9,9 @@ namespace P0
 {
     class LocationOrderHistory
     {
+        /// <summary>
+        /// See a location history
+        /// </summary>
         public static void locationOrderHistory()
         {
             int y = SelectLocation();
@@ -33,6 +36,10 @@ namespace P0
             }
         }// end OrderHistory
 
+        /// <summary>
+        /// Select a location to see it information(order history or inventory)
+        /// </summary>
+        /// <returns></returns>
         public static int SelectLocation()
         {
             Console.WriteLine("Locations list.\n");

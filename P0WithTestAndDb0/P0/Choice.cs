@@ -9,9 +9,13 @@ namespace P0
             Register = 2,//equivalent to 1
         }
         // register or login choice
+        /// <summary>
+        /// First thing the user should do is registeer or login
+        /// Get the user decision here then go to register or login
+        /// </summary>
         public static void RegisterLogin()
         {
-            Console.WriteLine("Welcome to Shopping Bay\n");
+            Console.WriteLine("\nWelcome to Shopping Bay\n");
             Console.WriteLine("Please login or register for new user.");
             int inputInt = -1;
             bool successfulConversion = false;
@@ -34,13 +38,21 @@ namespace P0
         }
        
 
+
         // store selection or store choice
+        /// <summary>
+        /// here are the current sotre in my Database
+        /// </summary>
         public enum StoreList
         {
             Berluti = 1,//equivalent to 1
             Rolex = 2,//equivalent to 2
             Dsquared2 = 3//equivalent to 3
         }
+        /// <summary>
+        /// The user will select the store where he want to shop
+        /// </summary>
+        /// <returns></returns>
         public static int SelectStore()
         {
             Console.WriteLine("Please select a store.");
@@ -68,10 +80,13 @@ namespace P0
         // store choice
         public enum ShoppingDecision
         {
-            Checkout = 1,//equivalent to 1
-            AddProduct = 2,//equivalent to 2
-            Dsquared2 = 3//equivalent to 3
+            exit = 2,//equivalent to 1
+            AddProduct = 1,
         }
+        /// <summary>
+        /// User will add a product to cart or exit shopping process
+        /// </summary>
+        /// <returns></returns>
         public static int ShoppingOperation()
         {
             Console.WriteLine("\nPlease make a selection.");
@@ -102,6 +117,14 @@ namespace P0
             Logout = 5, //equivalent to 5
         }
 
+        /// <summary>
+        /// User will have access to this Menu until he logout
+        /// when he logout the app will keeps running and 
+        /// the next user should login or register
+        /// </summary>
+        /// <param name="registeredUserId"></param>
+        /// <returns></returns>
+
         public static string Menu(int registeredUserId )
         {
             Console.WriteLine("\nPlease make a selection.");
@@ -123,12 +146,5 @@ namespace P0
 
             return "logout";
         }
-
-
-
-
-
-
-
     }
 }
