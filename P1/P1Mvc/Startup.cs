@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RepositoryLayer;
+using Microsoft.EntityFrameworkCore;
+using BusinessLayer;
 
 namespace P1Mvc
 {
@@ -24,6 +27,15 @@ namespace P1Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<P1Db>( options => {
+                if (!options.IsConfigured) // check if the options have already been configured in the testing suite
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                    // "Server=localhost\\SQLEXPRESS;Database=P1Db;Trusted_Connection=True;");
+                }
+                // add interfaces in scopp 
+                services.AddScoped<Register, Register>();
+            }); // make P1Db class PUBLIC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

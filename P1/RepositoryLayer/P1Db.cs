@@ -9,7 +9,7 @@ using ModelsLayer;
 
 namespace RepositoryLayer
 {
-    class P1Db : DbContext 
+    public class P1Db : DbContext 
     {
         public DbSet<User> Users { get; set; }
 
@@ -21,10 +21,11 @@ namespace RepositoryLayer
         protected override void OnConfiguring(DbContextOptionsBuilder options)
 
         {
-            if (!options.IsConfigured) // check if the options have already been configured in the testing suite
-            {
-                options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=P1Db;Trusted_Connection=True;");
-            }
+            // YOU CAN PUT THIS HERE OR WITHIN THE STARTUP.CS IN MVC
+            //if (!options.IsConfigured) // check if the options have already been configured in the testing suite
+            //{
+            //    options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=P1Db;Trusted_Connection=True;");
+            //}
         }
 
     }

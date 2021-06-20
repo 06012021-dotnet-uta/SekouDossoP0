@@ -38,15 +38,19 @@ namespace ModelsLayer
         // instance methods
         [Required(ErrorMessage = "FirstName must be at least 1 character.")]
         [MinLength(1)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "LastName must be at least 1 character.")]
         [MinLength(1)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Email must be at least 1 character.")]
         [MinLength(1)]
+        [Display(Name = "Password")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Password must be at least 3 characters.")]
         [MinLength(3)]
+        [Display(Name = "Email")]
         public string UserPassWord { get; set; }
         // class methode
 
