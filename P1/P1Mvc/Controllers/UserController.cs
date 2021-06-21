@@ -28,15 +28,7 @@ namespace P1Mvc.Controllers
         // GET: UserController
         public ActionResult Index()
         {
-            User user = new User()
-            {
-                FirstName = "a",
-                LastName = "a",
-                Email = "a",
-                UserPassWord = "aaa"
-            };
-              return View(user);
-            //turn View();
+              return View();
         }
 
         // GET: UserController/Details/5
@@ -48,6 +40,8 @@ namespace P1Mvc.Controllers
         // GET: UserController/Create
         public ActionResult Create()
         {
+
+            _logger.LogInformation("we are in userController/create");
             return View("CreateUser");
         }
 

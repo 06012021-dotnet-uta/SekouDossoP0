@@ -32,8 +32,8 @@ namespace P1Mvc
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 }
-               
                 services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
+                //services.AddDbContext<P1Db>();
             }); // make P1Db class PUBLIC
         }
 

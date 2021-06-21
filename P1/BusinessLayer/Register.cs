@@ -13,20 +13,15 @@ namespace BusinessLayer
     {
         // first define the context 
         private readonly P1Db _context;
+
         // create a constructor
-        public Register(P1Db context)
-        {
-            this._context = context;
-        }
+        public Register(P1Db context) { this._context = context; }
        
         public async Task<bool> RegisterPlayerAsync(User user)
         {
             // create a try/catch  to save user
             await _context.Users.AddAsync(user);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
+            try { await _context.SaveChangesAsync(); }
             catch (DbUpdateConcurrencyException ex)
             {
                 Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
