@@ -1,10 +1,10 @@
 ﻿@model ModelsLayer.User
 
 @{
-    ViewData["Title"] = "VerifyCreatePlayer";
+    ViewData["Title"] = "VerifyCreateUser";
 }
 
-<h1>VerifyCreatePlayer</h1>
+<h1>VerifyCreateUser</h1>
 
 <div>
     <h4>Please verify your data!</h4>
@@ -37,7 +37,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> | 
-    <a asp-action="Create" asp-route-id="@Model.UserId">Submit</a> |
+    @Html.ActionLink("Submit New User", "CreateNewUser", Model) |
     <a asp-action="Index">Back to List</a>
 </div>

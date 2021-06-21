@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public interface IRegister
+    public interface IRegisterUser
     {
-        Task<bool> RegisterUser(User user);
+        Task<bool> RegisterPlayerAsync(User user);
+        Task<List<User>> UserListAsync();
     }
 }

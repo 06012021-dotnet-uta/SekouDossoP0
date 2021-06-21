@@ -31,10 +31,9 @@ namespace P1Mvc
                 if (!options.IsConfigured) // check if the options have already been configured in the testing suite
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                    // "Server=localhost\\SQLEXPRESS;Database=P1Db;Trusted_Connection=True;");
                 }
-                // add interfaces in scopp 
-                services.AddScoped<Register, Register>();
+               
+                services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
             }); // make P1Db class PUBLIC
         }
 

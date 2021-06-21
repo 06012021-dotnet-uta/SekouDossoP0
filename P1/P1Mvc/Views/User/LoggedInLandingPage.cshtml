@@ -1,9 +1,4 @@
 ﻿
-@{
-    ViewData["Title"] = "LoggedInLandingPage";
-}
-
-<h1>LoggedInLandingPage</h1>
 
 @{
     ViewData["Title"] = "LoggedInLandingPage";
@@ -14,4 +9,10 @@
 
 <h1>@ViewData["Welcome"]</h1>
 
-@*buttons to view a User list.*@
+@*buttons to view a User.*@
+
+<div>
+    <button class="btn-light"><a class="btn" asp-area="" asp-controller="User" asp-action="Create">Create an Account</a></button>
+    <button class="btn-light"><a class="btn" asp-area="" asp-controller="User" asp-action="UserList">See The Player List!</a></button>
+</div>
+

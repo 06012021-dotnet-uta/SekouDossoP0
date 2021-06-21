@@ -9,21 +9,17 @@ using RepositoryLayer;
 
 namespace BusinessLayer
 {
-    public class Register
+    public class Register : IRegisterUser
     {
         // first define the context 
         private readonly P1Db _context;
+        // create a constructor
         public Register(P1Db context)
         {
             this._context = context;
         }
-        // create a constructor
-        /// <summary>
-		/// Saves a new User ot the Db. If un successful, returns false, otherwise TRUE.
-		/// </summary>
-		/// <param name="p"></param>
-		/// <returns></returns>
-        public async Task<bool> RegisterUser(User user)
+       
+        public async Task<bool> RegisterPlayerAsync(User user)
         {
             // create a try/catch  to save user
             await _context.Users.AddAsync(user);
@@ -44,6 +40,21 @@ namespace BusinessLayer
 
             return true;
 
+        }
+
+        // userList 
+        public async Task<List<User>> UserListAsync()
+        {
+            List<User> ps = null;
+            try
+            {
+                ps = _context.Users.ToList();
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return ps;
         }
     }
 }
