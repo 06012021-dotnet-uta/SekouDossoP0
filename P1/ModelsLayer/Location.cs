@@ -11,7 +11,6 @@ namespace ModelsLayer
         public string LocationName { get; set; }
         public string City { get; set; }
         public string LocationState { get; set; }
-        string locationState;
         public int ZipCode { set; get; }
 
         // constructor

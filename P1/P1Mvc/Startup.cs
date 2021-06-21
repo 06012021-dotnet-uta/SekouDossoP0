@@ -32,9 +32,9 @@ namespace P1Mvc
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 }
-                services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
-                //services.AddDbContext<P1Db>();
+               
             }); // make P1Db class PUBLIC
+            services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelsLayer
 {
-    class Store
+    public class Store
     {
         // instance methods
         public string StoreName { get; set; }
