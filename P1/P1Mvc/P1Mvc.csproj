@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>386c0af9-e360-4923-bebc-7f9eb7993c12</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
-    <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
+    <ProjectReference Include="..\P1.Tests\P1.Tests.csproj" />
+   
   </ItemGroup>
 
 </Project>

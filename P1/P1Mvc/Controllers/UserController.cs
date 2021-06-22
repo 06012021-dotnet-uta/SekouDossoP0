@@ -1,22 +1,60 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using P1Mvc.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessLayer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ModelsLayer;
+//using P1Mvc.Models;
+using RepositoryLayer;
 
 namespace P1Mvc.Controllers
 {
     public class UserController : Controller
     {
+        private readonly ILogger<UserController> _logger;
+
+        private readonly IRegisterUser _register;
+
+        // create a constructor for businesslayer
+        public UserController (IRegisterUser register, ILogger<UserController> logger)
+        {
+            this._register = register;
+            this._logger = logger;
+
+        }
         // GET: UserController
         public ActionResult Index()
         {
-            Console.WriteLine("Welcome to user Main Page.");
-            Console.WriteLine("Please Register or Login.");
-            User user = new User() { FName = "Max", LName = "Max" };
-            return View(user);
+            return View();
+        }
+
+        public async Task<ActionResult> UserListFilter(string sortOrder, string searchString)
+        {
+
+            List<User> userList = await _register.UserListAsync();
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                //List<User> userList = await _register.UserListAsync();
+                var users = userList.Where(u => u.LastName.Contains(searchString) 
+                            || u.FirstName.Contains(searchString));
+                return View(users);
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    //List<User> userList = await _register.UserListAsync();
+                    var users = userList.OrderBy(u => u.FirstName);
+                    return View(users);
+                default:
+                    //userList = await _register.UserListAsync();
+                    users = userList.OrderByDescending(u => u.LastName);
+                    return View(users);
+            }    
         }
 
         // GET: UserController/Details/5
@@ -28,7 +66,49 @@ namespace P1Mvc.Controllers
         // GET: UserController/Create
         public ActionResult Create()
         {
-            return View();
+
+            _logger.LogInformation("we are in userController/create");
+            return View("CreateUser");
+        }
+
+        // GET: UserController/CreateUser
+        [HttpPost]
+        public ActionResult CreateUser(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("Create");
+            }
+            return View("VerifyCreateUser", user);
+        }
+        // Post: UserController/CreateNewUser
+        public async Task<ActionResult> CreateNewUser(User user) // this task will be waiting for Businesslayer/register task
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("Create");
+            }
+
+            bool registeredUser = await _register.RegisterPlayerAsync(user); // Register within BusinessLayer
+
+            if (registeredUser)
+            {
+                ViewBag.Welcome = "Hey guy, welcome to Shopping Bay!";
+                return View("LoggedInLandingPage");
+            }
+
+            else
+            {
+                ViewBag.ErrorText = "Hey guy, there was an error!";
+                return View("Error");
+            }
+        }
+
+        // user List 
+        public async Task<ActionResult> UserList()
+        {
+            List<User> userList = await _register.UserListAsync();
+            return View(userList);
         }
 
         // POST: UserController/Create
