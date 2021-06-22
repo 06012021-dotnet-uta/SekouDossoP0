@@ -10,18 +10,18 @@ namespace ModelsLayer
     public class Order
     {
         // instance var 
-        [Key]
-        public int OrderId { get; set; }
-        public DateTime OrderDate { get; set; }
-        public User User { get; set; }
-        public Location Location { get; set; }
-        // constructor
-        public Order(DateTime orderDate, User user, Location location)
-        {
-            this.OrderDate = orderDate;
-            this.User = user;
-            this.Location = location;
-        }
+        // [Key]
+        // public int OrderId { get; set; }
+        // public DateTime OrderDate { get; set; }
+        // public User User { get; set; }
+        // public Location Location { get; set; }
+        // // constructor
+        // public Order(DateTime orderDate, User user, Location location)
+        // {
+        //     this.OrderDate = orderDate;
+        //     this.User = user;
+        //     this.Location = location;
+        // }
 
     }
 }

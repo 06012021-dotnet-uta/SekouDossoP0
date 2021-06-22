@@ -10,7 +10,7 @@ namespace ModelsLayer
     public class Location
     {
         [key]
-        public int LocationlId;
+        public int LocationId { get; set; }
 
         [Required(ErrorMessage = "Location Name must be at least 1 character.")]
         [MinLength(1)]
@@ -28,11 +28,16 @@ namespace ModelsLayer
         public string LocationState { get; set; }
 
         [Required(ErrorMessage = "ZipCode must be at least 1 character.")]
-        [MinLength(1)]
         [Display(Name = "ZipCode ")]
         public int ZipCode { set; get; }
 
         // constructor
+        public Location(){
+            LocationName = "locationName";
+            City = "city";
+            LocationState = "locationState";
+            ZipCode = 111;
+        }
         public Location(string locationName, string city, string locationState, int zipCode)
         {
             this.LocationName = locationName;
