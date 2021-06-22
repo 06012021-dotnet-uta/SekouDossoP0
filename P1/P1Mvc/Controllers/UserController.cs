@@ -28,7 +28,33 @@ namespace P1Mvc.Controllers
         // GET: UserController
         public ActionResult Index()
         {
-              return View();
+            return View();
+        }
+
+        public async Task<ActionResult> UserListFilter(string sortOrder, string searchString)
+        {
+
+            List<User> userList = await _register.UserListAsync();
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                //List<User> userList = await _register.UserListAsync();
+                var users = userList.Where(u => u.LastName.Contains(searchString) 
+                            || u.FirstName.Contains(searchString));
+                return View(users);
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    //List<User> userList = await _register.UserListAsync();
+                    var users = userList.OrderBy(u => u.FirstName);
+                    return View(users);
+                default:
+                    //userList = await _register.UserListAsync();
+                    users = userList.OrderByDescending(u => u.LastName);
+                    return View(users);
+            }    
         }
 
         // GET: UserController/Details/5
