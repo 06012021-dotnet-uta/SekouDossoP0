@@ -30,6 +30,12 @@ namespace P1Mvc.Controllers
         {
             return View();
         }
+         // user List 
+        public async Task<ActionResult> UserList()
+        {
+            List<User> userList = await _register.UserListAsync();
+            return View(userList);
+        }
 
         public async Task<ActionResult> UserListFilter(string sortOrder, string searchString)
         {
@@ -104,12 +110,7 @@ namespace P1Mvc.Controllers
             }
         }
 
-        // user List 
-        public async Task<ActionResult> UserList()
-        {
-            List<User> userList = await _register.UserListAsync();
-            return View(userList);
-        }
+       
 
         // POST: UserController/Create
         [HttpPost]

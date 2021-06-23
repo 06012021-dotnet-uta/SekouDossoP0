@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    class IStore
+    public interface IStore
     {
     }
 }
