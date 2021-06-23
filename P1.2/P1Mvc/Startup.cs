@@ -36,6 +36,7 @@ namespace P1Mvc
             }); // make P1Db class PUBLIC
             services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
             services.AddScoped<ILocation, LocationService>();
+            services.AddScoped<IOrder, OrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

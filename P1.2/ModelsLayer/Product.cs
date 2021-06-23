@@ -27,11 +27,11 @@ namespace ModelsLayer
         [Display(Name = "Product Price")]
         public int ProductPrice { get; set; }
         // constructor
-        public Product(string productName, string productDescription, int productPrice )
-        {
-            this.ProductName = productName;
-            this.ProductDescription = productDescription;
-            this.ProductPrice = productPrice;
-        }
+        // public Product(string productName, string productDescription, int productPrice )
+        // {
+        //    this.ProductName = productName;
+        //    this.ProductDescription = productDescription;
+        //    this.ProductPrice = productPrice;
+        // }
     }
 }
