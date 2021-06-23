@@ -53,20 +53,16 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LocationId")
+                    b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("OrderId");
-
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -120,21 +116,6 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ModelsLayer.Order", b =>
-                {
-                    b.HasOne("ModelsLayer.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId");
-
-                    b.HasOne("ModelsLayer.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Location");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

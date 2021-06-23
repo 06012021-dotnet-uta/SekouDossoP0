@@ -13,10 +13,10 @@ namespace ModelsLayer
          public DateTime OrderDate { get; set; }
         //[Required]
         [ForeignKey("User")]
-         public User User { get; set; }
+         public int UserId { get; set; }
 
         [ForeignKey("Location")]
-         public Location Location { get; set; }
+         public int LocationId { get; set; }
          // constructor
          // public Order(DateTime orderDate, User user, Location location)
          // {

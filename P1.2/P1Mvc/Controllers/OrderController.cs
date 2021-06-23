@@ -101,7 +101,7 @@ namespace P1Mvc.Controllers
             if (registeredOrder)
             {
                 ViewBag.Welcome = "Thanks for your shopping!";
-                return View("OrderList");
+                return View("OrderLandingPage");
             }
 
             else

@@ -74,7 +74,7 @@ namespace P1Mvc.Controllers
             if (registeredLocation)
             {
                 ViewBag.Welcome = "New Location added!";
-                return View("LocationList");
+                return View("LocationLandingPage");
             }
 
             else

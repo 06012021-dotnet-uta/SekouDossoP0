@@ -1,0 +1,18 @@
+﻿@model ModelsLayer.Location
+
+
+@{
+    ViewData["Title"] = "If you Want to see your the Location?";
+}
+
+<h1>Click bellow</h1>
+
+<p>@ViewData["Title"]</p>
+
+<h1>@ViewData["Current Locations"]</h1>
+
+@*buttons to view a Order.*@
+
+<div>
+    <button class="btn-light"><a class="btn" asp-area="" asp-controller="Location" asp-action="LocationList">See All Locations!</a></button>
+</div>
