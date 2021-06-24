@@ -37,6 +37,8 @@ namespace P1Mvc
             services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
             services.AddScoped<ILocation, LocationService>();
             services.AddScoped<IOrder, OrderService>();
+            services.AddScoped<IStore, StoreService>();
+            //services.AddScoped<IProduct, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
