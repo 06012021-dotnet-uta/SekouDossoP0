@@ -13,10 +13,10 @@ namespace P1Mvc.Controllers
     public class OrderProductController : Controller
     {
         // instance of IOrderProduct
-        private readonly ILogger<UserController> _logger;
+        private readonly ILogger<OrderProductController> _logger;
         private readonly IOrderProduct _orderProduct;
         // constructor
-        public OrderProductController (IOrderProduct orderProduct, ILogger<UserController> logger)
+        public OrderProductController (IOrderProduct orderProduct, ILogger<OrderProductController> logger)
         {
             this._orderProduct = orderProduct;
             this._logger = logger;
