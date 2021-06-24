@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BusinessLayer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +12,26 @@ namespace P1Mvc.Controllers
 {
     public class OrderProductController : Controller
     {
+        // instance of IOrderProduct
+        private readonly ILogger<UserController> _logger;
+        private readonly IOrderProduct _orderProduct;
+        // constructor
+        public OrderProductController (IOrderProduct orderProduct, ILogger<UserController> logger)
+        {
+            this._orderProduct = orderProduct;
+            this._logger = logger;
+        }
         // GET: OrderProductController
         public ActionResult Index()
         {
             return View();
+        }
+
+        // GET: OrderProduct list
+        public async Task<ActionResult> OrderProductList()
+        {
+            List<OrderProduct> orderProductList = await _orderProduct.OrderProductListAsync();
+            return View(orderProductList);
         }
 
         // GET: OrderProductController/Details/5
@@ -24,8 +43,45 @@ namespace P1Mvc.Controllers
         // GET: OrderProductController/Create
         public ActionResult Create()
         {
-            return View();
+            _logger.LogInformation("we are in OrderProductController/create");
+            return View("CreateOrderProduct");
         }
+
+        // Create OrderProduct
+        [HttpPost]
+        public ActionResult CreateOrderProduct(OrderProduct op )
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("Create");
+            }
+            return View("VerifyCreateLocation", op);
+        }
+
+        // save  new OrderProduct
+        public async Task<ActionResult> CreateNewOrderProduct(OrderProduct op) // this task will be waiting for Businesslayer/register task
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("Create");
+            }
+
+            bool registeredOrderProduct = await _orderProduct.RegisterOrderProductAsync(op); // Register within BusinessLayer
+
+            if (registeredOrderProduct)
+            {
+                ViewBag.Welcome = "New Location added!";
+                return View("LocationLandingPage");
+            }
+
+            else
+            {
+                ViewBag.ErrorText = "Hey guy, there was an error!";
+                return View("Error");
+            }
+        }
+
+
 
         // POST: OrderProductController/Create
         [HttpPost]
