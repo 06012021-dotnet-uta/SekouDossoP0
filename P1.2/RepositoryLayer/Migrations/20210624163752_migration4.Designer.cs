@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(P1Db))]
-    partial class P1DbModelSnapshot : ModelSnapshot
+    [Migration("20210624163752_migration4")]
+    partial class migration4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +71,7 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("ModelsLayer.OrderProduct", b =>
                 {
-                    b.Property<int>("OrderProductId")
+                    b.Property<int>("OrderProductid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -83,7 +85,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderProductId");
+                    b.HasKey("OrderProductid");
 
                     b.HasIndex("Orderid");
 
@@ -134,31 +136,6 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Stores");
                 });
 
-            modelBuilder.Entity("ModelsLayer.StoreProduct", b =>
-                {
-                    b.Property<int>("StoreProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StoreId")
-                        .HasColumnType("int");
-
-                    b.HasKey("StoreProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("StoreId");
-
-                    b.ToTable("StoreProducts");
-                });
-
             modelBuilder.Entity("ModelsLayer.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -204,25 +181,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ModelsLayer.StoreProduct", b =>
-                {
-                    b.HasOne("ModelsLayer.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ModelsLayer.Order", "Store")
-                        .WithMany()
-                        .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Store");
                 });
 #pragma warning restore 612, 618
         }
