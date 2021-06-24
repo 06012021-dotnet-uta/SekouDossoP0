@@ -72,8 +72,8 @@ namespace P1Mvc.Controllers
 
             if (registeredStoreProduct)
             {
-                ViewBag.Welcome = "New Location added!";
-                return View("LocationLandingPage");
+                ViewBag.Welcome = "New product added added!";
+                return View("StoreProductLandingPage");
             }
             else
             {
