@@ -21,13 +21,13 @@ namespace P1Mvc.Controllers
             this._product = product;
             this._logger = logger;
         }
-        // GET: StoreController
+        // GET: ProductController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: StoreController/Details/5
+        // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -52,7 +52,7 @@ namespace P1Mvc.Controllers
             {
                 RedirectToAction("Create");
             }
-            return View("VerifyCreateStore", product);
+            return View("VerifyCreateProduct", product);
         }
 
         // save new store 
@@ -83,7 +83,7 @@ namespace P1Mvc.Controllers
 
 
 
-        // POST: StoreController/Create
+        // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -104,7 +104,7 @@ namespace P1Mvc.Controllers
             return View();
         }
 
-        // POST: StoreController/Edit/5
+        // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -119,13 +119,13 @@ namespace P1Mvc.Controllers
             }
         }
 
-        // GET: StoreController/Delete/5
+        // GET: ProductController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: StoreController/Delete/5
+        // POST: ProductController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

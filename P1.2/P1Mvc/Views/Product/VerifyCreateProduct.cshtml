@@ -32,5 +32,6 @@
 </div>
 <div>
     @Html.ActionLink("Submit", "CreateNewProduct", Model) |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Back to List", "ProductList", Model)
+ 
 </div>
