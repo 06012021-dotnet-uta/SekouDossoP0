@@ -14,17 +14,17 @@ namespace ModelsLayer
 
         [Required(ErrorMessage = "Product Name must be at least 1 character.")]
         [MinLength(1)]
-        [Display(Name = "Product Name")]
+        [Display(Name = "Name")]
         public string ProductName { get; set; }
 
         [Required(ErrorMessage = "Product Description must be at least 1 character.")]
         [MinLength(1)]
-        [Display(Name = "Product Description ")]
+        [Display(Name = "Description ")]
         public string ProductDescription { get; set; }
 
         [Required(ErrorMessage = "Product Price must be at least great than 0.")]
-        [MinLength(1)]
-        [Display(Name = "Product Price")]
+       
+        [Display(Name = "Price")]
         public int ProductPrice { get; set; }
         // constructor
         // public Product(string productName, string productDescription, int productPrice )
