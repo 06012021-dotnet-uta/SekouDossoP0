@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
+  solution: 'SekouDossoP0/demo/P1.2/P1Mvc/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
