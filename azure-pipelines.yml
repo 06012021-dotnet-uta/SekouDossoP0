@@ -32,3 +32,12 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- script:  echo "This is a message"
+
+# stages:
+#   - stage:
+#   displayName: stage1
+#   script: echo this is stage 1.
+
+#   Jobs:
