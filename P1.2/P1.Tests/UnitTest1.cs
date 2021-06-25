@@ -56,7 +56,7 @@ namespace P1.Tests
 
 				//instantiate the RpsGameClass that we are going to unit test
 				BRegister register = new BRegister(context);
-				result = await register.RegisterPlayerAsync(user);
+				result = await register.RegisterUserAsync(user);
 
 				context.SaveChanges();
 				//}

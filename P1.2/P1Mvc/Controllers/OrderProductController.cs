@@ -55,7 +55,7 @@ namespace P1Mvc.Controllers
             {
                 RedirectToAction("Create");
             }
-            return View("VerifyCreateLocation", op);
+            return View("VerifyCreateOrderProduct", op);
         }
 
         // save  new OrderProduct
@@ -70,8 +70,8 @@ namespace P1Mvc.Controllers
 
             if (registeredOrderProduct)
             {
-                ViewBag.Welcome = "New Location added!";
-                return View("LocationLandingPage");
+                ViewBag.Welcome = "New order added!";
+                return View("OrderProductLandingPage");
             }
 
             else

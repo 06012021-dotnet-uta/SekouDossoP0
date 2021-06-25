@@ -32,7 +32,16 @@ namespace P1Mvc.Controllers
         public async Task<ActionResult> StoreProductList()
         {
             List<StoreProduct> storeProductList = await _sp.StoreProductListAsync();
-            return View(storeProductList);
+            List<Product> products = await _sp.ProductListAsync();
+            List<Product> productList = new List<Product>();
+
+            foreach (var  xx in storeProductList)
+            { 
+                    var product = products.Where(x => x.ProductId == xx.ProductId).FirstOrDefault();
+                productList.Add(product);
+                //Console.WriteLine($" Product name: {product.ProductName} -- product descrition: {product.ProductPrice}$ -- price: {sp.Quantity}");
+            }
+            return View(productList);
         }
 
 
@@ -57,7 +66,7 @@ namespace P1Mvc.Controllers
             {
                 RedirectToAction("Create");
             }
-            return View("VerifyCreateLocation", sp);
+            return View("VerifyCreateStoreProduct", sp);
         }
 
         // save new StoreProduct
@@ -72,8 +81,8 @@ namespace P1Mvc.Controllers
 
             if (registeredStoreProduct)
             {
-                ViewBag.Welcome = "New Location added!";
-                return View("LocationLandingPage");
+                ViewBag.Welcome = "New product added added!";
+                return View("StoreProductLandingPage");
             }
             else
             {

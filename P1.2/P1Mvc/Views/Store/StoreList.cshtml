@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ModelsLayer.Store>
 
 @{
-    ViewData["Title"] = "StoreList";
+    ViewData["Title"] = "Store List";
 }
 
-<h1>StoreList</h1>
+<h1>Store List</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
 </p>
 <table class="table">
     <thead>
@@ -30,11 +30,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LocationId)
             </td>
-            <td>
+            @* <td>
                 <a asp-action="Edit" asp-route-id="@item.StoreId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StoreId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.StoreId">Delete</a>
-            </td>
+            </td> *@
         </tr>
 }
     </tbody>

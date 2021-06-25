@@ -37,13 +37,30 @@ namespace BusinessLayer
 
         }
 
-        // userList 
+        // store product List 
         public async Task<List<StoreProduct>> StoreProductListAsync()
         {
             List<StoreProduct> ps = null;
             try
             {
                 ps = _context.StoreProducts.ToList();
+               
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return ps;
+        }
+
+        // product list 
+        public async Task<List<Product>> ProductListAsync()
+        {
+            List<Product> ps = null;
+            try
+            {
+                ps = _context.Products.ToList();
+
             }
             catch (ArgumentNullException ex)
             {

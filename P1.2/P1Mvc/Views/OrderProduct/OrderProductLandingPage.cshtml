@@ -1,0 +1,19 @@
+﻿@model ModelsLayer.OrderProduct
+
+
+@{
+    ViewData["Title"] = "If you Want to see the OrpderProduts list ?";
+}
+
+<h1>Click bellow</h1>
+
+<p>@ViewData["Title"]</p>
+
+<h1>@ViewData["Current Products"]</h1>
+
+@*buttons to view a Order.*@
+
+<div>
+    <button class="btn-light"><a class="btn" asp-area="" asp-controller="OrderProduct" asp-action="OrderProductList">See All OrderProducts!</a></button>
+</div>
+

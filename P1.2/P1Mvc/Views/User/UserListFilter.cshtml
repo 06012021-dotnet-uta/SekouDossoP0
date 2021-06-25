@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ModelsLayer.User>
 
 @{
-    ViewData["Title"] = "UserListFilter";
+    ViewData["Title"] = "User List ";
 }
 
-<h1>UserListFilter</h1>
+@* <h1>UserListFilter</h1> *@
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
 </p>
 @using (Html.BeginForm())
 {
@@ -45,11 +45,11 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
 
-                <td>
+                @* <td>
                     <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
-                </td>
+                </td> *@
             </tr>
         }
     </tbody>

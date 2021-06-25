@@ -18,6 +18,9 @@ namespace RepositoryLayer
         public DbSet<Store> Stores { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
         public DbSet<StoreProduct> StoreProducts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartProduct> CartProducts { get; set; }
+
 
 
         // constructor

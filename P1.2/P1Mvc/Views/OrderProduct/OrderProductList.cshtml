@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ModelsLayer.OrderProduct>
+
+@{
+    ViewData["Title"] = "Order Product List";
+}
+
+<h1>Order Product List</h1>
+
+<p>
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            @* <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderProductId">Details</a> |
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
