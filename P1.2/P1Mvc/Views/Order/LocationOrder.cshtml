@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ModelsLayer.Order>
 
 @{
-    ViewData["Title"] = "OrderList";
+    ViewData["Title"] = "LocationOrder";
 }
 
-<h1>All Orders History</h1>
+<h1>Location Order history</h1>
 
 <p>
     <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
@@ -18,9 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.OrderDate)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.User)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Location)
             </th>
@@ -36,13 +36,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.Location.LocationName)
             </td>
-            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+            </td>
         </tr>
 }
     </tbody>

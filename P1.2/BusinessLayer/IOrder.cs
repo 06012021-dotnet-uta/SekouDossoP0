@@ -11,5 +11,7 @@ namespace BusinessLayer
     {
         Task<bool> CreateOrderAsync(Order order);
         Task<List<Order>> OrderListAsync();
+        Task<List<Location>> LocationOrderListAsync();
+        Task<List<User>> UserOrderListAsync();
     }
 }

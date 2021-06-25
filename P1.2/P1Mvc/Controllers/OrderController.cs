@@ -35,33 +35,73 @@ namespace P1Mvc.Controllers
             List<Order> orderList = await _order.OrderListAsync();
             return View(orderList);
         }
+        // Location order list 
+        public async Task<ActionResult> LocationOrder()
+        {
+            List<Location> locations = await _order.LocationOrderListAsync();
+            List<Order> orders = await _order.OrderListAsync();
+            List<Order> orderList = new List<Order>();
+            foreach (var  xx in locations)
+            { 
+                    var matchOrders = orders.Where(x => x.LocationId == xx.LocationId).ToList();
+                    try{
+                        foreach(var x in matchOrders)
+                        orderList.Add(x);
+                    }
+                    catch (Exception ex){
+                        Console.WriteLine(ex);
+                    }
+            }
+            return View(orderList);
+        }
 
-        // filter order 
-       // public async Task<ActionResult> OrderListFilter(string sortOrder)
-        //{
+        // user order list
+        public async Task<ActionResult> UserOrder()
+        {
+            List<User> users = await _order.UserOrderListAsync();
+            List<Order> orders = await _order.OrderListAsync();
+            List<Order> orderList = new List<Order>();
+            foreach (var  xx in users)
+            { 
+                    var matchOrders = orders.Where(x => x.UserId == xx.UserId).ToList();
+                    try{
+                        foreach(var x in matchOrders)
+                        orderList.Add(x);
+                    }
+                    catch (Exception ex){
+                        Console.WriteLine(ex);
+                    }
+            }
+            return View(orderList);
+        }
+       
+       // filter order 
+       public async Task<ActionResult> OrderListFilter(string sortOrder, string searchString)
+        {
 
-        //    List<Order> orderList = await _order.OrderListAsync();
-        //    ViewBag.DateSortParm = sortOrder == "Date" ?  "date_desc" : "Date";
-            //if (!String.IsNullOrEmpty(orderId))
-            //{
-                //List<User> userList = await _register.UserListAsync();
-           //     var orders = orderList.Where(o => o.OrderId = orderId );
-           //     return View(orders);
-           // }
+            List<Order> orderList = await _order.OrderListAsync();
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                //List<User> orderList = await _register.orderListAsync();
+                var orders = orderList.Where(x => x.User.FirstName.Contains(searchString) 
+                            || x.User.LastName.Contains(searchString));
+                return View(orders);
+            }
 
-        //    switch (sortOrder)
-        //    {
-        //        case "Date":
-        //            var orders = orderList.OrderBy(o => o.OrderDate);
-        //            View(orders);
-        //        case "date_desc":
-        //            orders = orderList.OrderByDescending(o => o.OrderDate);
-        //            View(orders);
-                    //userList = await _register.UserListAsync();
-        //            orders = orderList.OrderByDescending(o => o.OrderId);
-         //           return View(orders);
-         //   }
-      //  }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    //List<User> orderList = await _register.orderListAsync();
+                    var orders = orderList.OrderBy(u => u.OrderId);
+                    return View(orders);
+                default:
+                    //orderList = await _register.orderListAsync();
+                    orders = orderList.OrderByDescending(u => u.OrderDate);
+                    return View(orders);
+            }    
+        }
+
 
 
         // GET: OrderController/Details/5

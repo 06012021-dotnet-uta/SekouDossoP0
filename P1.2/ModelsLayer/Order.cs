@@ -14,9 +14,11 @@ namespace ModelsLayer
         //[Required]
         [ForeignKey("User")]
          public int UserId { get; set; }
+         public User User { get; set; }
 
         [ForeignKey("Location")]
          public int LocationId { get; set; }
+         public Location Location { get; set;  }
          // constructor
          // public Order(DateTime orderDate, User user, Location location)
          // {
