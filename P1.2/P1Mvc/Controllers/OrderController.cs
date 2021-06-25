@@ -76,16 +76,16 @@ namespace P1Mvc.Controllers
         }
        
        // filter order 
-       public async Task<ActionResult> OrderListFilter(string sortOrder, string searchString)
+       public async Task<ActionResult> OrderListFilter(string sortOrder, int searchString)
         {
 
             List<Order> orderList = await _order.OrderListAsync();
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            if (!String.IsNullOrEmpty(searchString))
+            if (searchString > 0)
             {
                 //List<User> orderList = await _register.orderListAsync();
-                var orders = orderList.Where(x => x.User.FirstName.Contains(searchString) 
-                            || x.User.LastName.Contains(searchString));
+                var orders = orderList.Where(x => x.UserId == searchString);
+                            
                 return View(orders);
             }
 

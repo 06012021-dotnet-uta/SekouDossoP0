@@ -7,12 +7,12 @@
 <h1>OrderListFilter</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
 </p>
 @using (Html.BeginForm())
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")
+        Find by UserId: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
 }
@@ -20,7 +20,7 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("user First Name", "OrderListFilter", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("user id ", "OrderListFilter", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OrderId)
@@ -39,7 +39,7 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName)
+                @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderId)
@@ -48,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Location.LocationName)
+                @Html.DisplayFor(modelItem => item.LocationId)
             </td>
             
         </tr>
