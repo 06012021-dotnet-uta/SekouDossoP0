@@ -8,26 +8,27 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="UserList">Home</a>
 
-                <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="UserListFilter">Search User</a>
+    @* <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="UserList">Home</a>
 
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Store Order History</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="UserListFilter">Search User</a>
 
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">User Order History</a>
-            
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Privacy">Inventory</a>
-                
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cart</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Store Order History</a>
 
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">User Order History</a>
 
-            </div>
-        </nav>
-    </header>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Privacy">Inventory</a>
+
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cart</a>
+
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+
+                </div>
+            </nav>
+        </header> *@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

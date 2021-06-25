@@ -55,7 +55,7 @@ namespace P1Mvc.Controllers
             {
                 RedirectToAction("Create");
             }
-            return View("VerifyCreateLocation", op);
+            return View("VerifyCreateOrderProduct", op);
         }
 
         // save  new OrderProduct

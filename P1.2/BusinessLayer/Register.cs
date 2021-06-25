@@ -16,12 +16,20 @@ namespace BusinessLayer
 
         // create a constructor
         public Register(P1Db context) { this._context = context; }
-       
-        public async Task<bool> RegisterPlayerAsync(User user)
+        // currentUser
+        User currentUser = null;
+        // register new customer 
+        public async Task<bool> RegisterUserAsync(User user)
         {
+            
+            
             // create a try/catch  to save user
             await _context.Users.AddAsync(user);
-            try { await _context.SaveChangesAsync(); }
+            try {
+                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
+
+            }
             catch (DbUpdateConcurrencyException ex)
             {
                 Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
@@ -32,9 +40,27 @@ namespace BusinessLayer
                 Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
                 return false;
             }
-
+            // currentUser
+            currentUser = user;
+            // instantiate a shopping cart iimediately for the new customer 
+            var newCart = new Cart(user.UserId);
+            _context.Carts.Add(newCart);
+            _context.SaveChanges();
             return true;
-
+        }
+        
+        // log in
+        public async Task<bool> LoginAsync(User user)
+        {
+            // create a try/catch  to save user
+            try { var currentUser = _context.Users.ToList().Where(x => x.Email == user.Email).FirstOrDefault(); }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"User not found => {ex.InnerException}");
+                return false;
+            }
+            currentUser = user;
+            return true;
         }
 
         // userList 

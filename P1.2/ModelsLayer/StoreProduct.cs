@@ -14,11 +14,11 @@ namespace ModelsLayer
         public int StoreProductId { get; set; }
 
 
-        [ForeignKey("StoreId")]
+        [ForeignKey("Store")]
         public int StoreId { get; set; }
-        public Order Store { get; set; }
+        public Store Store { get; set; }
 
-        [ForeignKey("ProductId")]
+        [ForeignKey("Product")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
 

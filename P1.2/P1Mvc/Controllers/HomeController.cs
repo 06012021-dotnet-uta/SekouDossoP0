@@ -23,6 +23,8 @@ namespace P1Mvc.Controllers
 			return View();
 		}
 
+		// main 
+
 		public IActionResult Privacy()
 		{
 			return View();

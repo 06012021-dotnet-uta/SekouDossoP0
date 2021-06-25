@@ -11,5 +11,6 @@ namespace BusinessLayer
     {
         Task<bool> RegisterStoreProductAsync(StoreProduct st);
         Task<List<StoreProduct>> StoreProductListAsync();
+        Task<List<Product>> ProductListAsync();
     }
 }

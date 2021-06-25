@@ -69,6 +69,37 @@ namespace P1Mvc.Controllers
             return View();
         }
 
+        // Log in 
+        // GET: UserController/Login
+        public ActionResult Login()
+        {
+
+            _logger.LogInformation("we are in userController/create");
+            return View("UserLogin");
+        }
+
+        public async Task<ActionResult> UserLogin(User u)
+        // public void Login(User u)
+        {
+
+            List<User> userList = await _register.UserListAsync();
+            User rU = userList.Where(x => x.Email == u.Email).FirstOrDefault();
+            //bool result = await _register.LoginAsync(u);
+            if (rU != null)
+            {
+                return RedirectToAction("Index", "Main");
+               // return View("LoggedInLandingPage");
+
+            }
+            else
+            {
+                ViewBag.ErrorText = "Hey guy, there was an error!";
+                return RedirectToAction("Index", "Main");
+                //return View("LoggedInLandingPage");
+                //return View("UserLogin");
+            }
+        }
+
         // GET: UserController/Create
         public ActionResult Create()
         {
@@ -95,7 +126,7 @@ namespace P1Mvc.Controllers
                 RedirectToAction("Create");
             }
 
-            bool registeredUser = await _register.RegisterPlayerAsync(user); // Register within BusinessLayer
+            bool registeredUser = await _register.RegisterUserAsync(user); // Register within BusinessLayer
 
             if (registeredUser)
             {

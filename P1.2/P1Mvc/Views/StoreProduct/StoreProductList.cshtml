@@ -1,44 +1,45 @@
-﻿@model IEnumerable<ModelsLayer.StoreProduct>
+﻿@model IEnumerable<ModelsLayer.Product>
 
 @{
-    ViewData["Title"] = "StoreProductList";
+    ViewData["Title"] = "Store Product List";
 }
 
-<h1>StoreProductList</h1>
+<h1>Store Product List</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
+</p> 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Store)
+                @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product)
+                @Html.DisplayNameFor(model => model.ProductPrice)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.Quantity)
-            </th>
+            </th> *@
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Store.OrderId)
+                @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductDescription)
+                @Html.DisplayFor(modelItem => item.ProductPrice)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
+            </td> *@
+
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StoreProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StoreProductId">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Add to Cart</a> |
             </td>
         </tr>
 }

@@ -4,23 +4,23 @@
     ViewData["Title"] = "VerifyCreateProduct";
 }
 
-<h1>VerifyCreateProduct</h1>
+<h1>VerifyCreateOrderProduct</h1>
 
 <div>
     <h4>OrderProduct</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Order)
+            @Html.DisplayNameFor(model => model.OrderId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Order.OrderId)
+            @Html.DisplayFor(model => model.OrderId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Product)
+            @Html.DisplayNameFor(model => model.ProductId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Product.ProductDescription)
+            @Html.DisplayFor(model => model.ProductId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Quantity)
