@@ -21,10 +21,19 @@ namespace BusinessLayer
         // register new customer 
         public async Task<bool> RegisterUserAsync(User user)
         {
-            
+            // create account when user register
+            //  var newUser = new P0DbContext.User();
+            //     newUser.FirstName = firstName;
+            // var userAccount = await _context.Accounts().ToList(); 
+            var userAccount = new Account();
+            userAccount.UserName =  user.UserName; 
+            userAccount.UserPassword =  user.UserPassWord;
             
             // create a try/catch  to save user
             await _context.Users.AddAsync(user);
+            await _context.Accounts.AddAsync(userAccount);
+
+            await _context.Accounts.AddAsync(userAccount);
             try {
                 await _context.SaveChangesAsync();
                 //await _context.SaveChangesAsync();

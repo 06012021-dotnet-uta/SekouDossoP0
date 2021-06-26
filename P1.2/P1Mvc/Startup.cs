@@ -42,6 +42,7 @@ namespace P1Mvc
             services.AddScoped<IOrderProduct, OrderProductService>();
             services.AddScoped<IStoreProduct, StoreProductService>();
             services.AddScoped<ICart, CartService>();
+            services.AddScoped<IAccount, Accont>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

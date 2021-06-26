@@ -20,6 +20,7 @@ namespace RepositoryLayer
         public DbSet<StoreProduct> StoreProducts { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartProduct> CartProducts { get; set; }
+        public DbSet<Account> Accounts { get; set; }
 
 
 
