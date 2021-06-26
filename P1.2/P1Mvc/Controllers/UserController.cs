@@ -81,20 +81,16 @@ namespace P1Mvc.Controllers
         public async Task<ActionResult> UserLogin(User u)
         // public void Login(User u)
         {
-
-            List<User> userList = await _register.UserListAsync();
-            User rU = userList.Where(x => x.Email == u.Email).FirstOrDefault();
-            //bool result = await _register.LoginAsync(u);
-            if (rU != null)
+            bool result = await _register.LoginAsync(u);
+            if (result)
             {
                 return RedirectToAction("Index", "Main");
                // return View("LoggedInLandingPage");
-
             }
             else
             {
                 ViewBag.ErrorText = "Hey guy, there was an error!";
-                return RedirectToAction("Index", "Main");
+                return RedirectToAction("Index", "Home");
                 //return View("LoggedInLandingPage");
                 //return View("UserLogin");
             }

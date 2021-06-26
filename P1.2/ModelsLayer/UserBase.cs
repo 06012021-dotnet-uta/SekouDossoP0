@@ -38,21 +38,21 @@ namespace ModelsLayer
         public string UserPassWord { get; set; }
         
         // constructor
-        public UserBase()
-        {
-            FirstName = "firstName";
-            LastName = "lastName";
-            Email = "email";
-            UserPassWord = "userPassWord";
-        }
-        public UserBase(string firstName, string lastName, string email, string userPassWord)
-        {
-            //this.UserId = userId;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Email = email;
-            this.UserPassWord = userPassWord;
-        }
+        // public UserBase()
+        // {
+        //     FirstName = "firstName";
+        //     LastName = "lastName";
+        //     Email = "email";
+        //     UserPassWord = "userPassWord";
+        // }
+        // public UserBase(string firstName, string lastName, string email, string userPassWord)
+        // {
+        //     //this.UserId = userId;
+        //     this.FirstName = firstName;
+        //     this.LastName = lastName;
+        //     this.Email = email;
+        //     this.UserPassWord = userPassWord;
+        // }
 
         // class methode
 

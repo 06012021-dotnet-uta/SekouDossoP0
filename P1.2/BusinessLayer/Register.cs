@@ -53,7 +53,7 @@ namespace BusinessLayer
         public async Task<bool> LoginAsync(User user)
         {
             // create a try/catch  to save user
-            try { var currentUser = _context.Users.ToList().Where(x => x.Email == user.Email).FirstOrDefault(); }
+            try { var currentUser = _context.Users.Where(x => x.Email == user.Email && x.UserPassWord == user.UserPassWord).FirstOrDefault(); }
             catch (Exception ex)
             {
                 Console.WriteLine($"User not found => {ex.InnerException}");
