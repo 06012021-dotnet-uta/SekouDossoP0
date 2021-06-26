@@ -19,9 +19,11 @@ namespace ModelsLayer
          [Display(Name = "Store Name")]
          public string StoreName { get; set; }
 
-         [Display(Name = "Location Id")]
+        //  [Display(Name = "Location Id")]
          [ForeignKey("LocationId")]
          public int LocationId { get; set;}
+
+         public Location Location { get; set; }
          // constructor
         // public Store(string storeName, Location location)
         // {

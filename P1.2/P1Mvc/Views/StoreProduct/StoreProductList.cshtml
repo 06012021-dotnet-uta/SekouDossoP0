@@ -1,46 +1,60 @@
-﻿@model IEnumerable<ModelsLayer.Product>
+﻿@model IEnumerable<ModelsLayer.StoreProduct>
 
 @{
-    ViewData["Title"] = "Store Product List";
+    ViewData["Title"] = "StoreProductList";
 }
 
-<h1>Store Product List</h1>
+<h1>StoreProductList</h1>
 
 <p>
     <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
-</p> 
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
+                @Html.DisplayNameFor(model => model.Product.ProductName)
             </th>
             @* <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                @Html.DisplayNameFor(model => model.Product.ProductDescription)
             </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Store.StoreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Store.Location.LocationName)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-
             <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
             </td>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Product.ProductDescription)
+            </th> *@
+            <th>
+                @Html.DisplayFor(modelItem => item.Product.ProductPrice)
+            </th>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            @* <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
-            </td> *@
-
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Add to Cart</a> |
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Store.StoreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Store.Location.LocationName)
+            </td>
+
         </tr>
 }
     </tbody>
