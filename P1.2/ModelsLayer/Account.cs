@@ -11,10 +11,20 @@ namespace ModelsLayer
     {
         [key]
         public int AccountId { get; set; }
+
         [ForeignKey("UserName")]
         public string UserName { get; set; }
-        [ForeignKey("UserPassword")]
-        public string UserPassword { get; set; }
         public User User { get; set; }
+        //[ForeignKey("UserPassWord")]
+        public string UserPassWord { get; set; }
+        public Account(){
+            UserName = "userName";
+            UserPassWord = "userPassWord";
+        }
+        public Account(string userName, string userPassWord){
+            this.UserName = userName;
+            this.UserPassWord = userPassWord;
+        }
     }
+
 }
