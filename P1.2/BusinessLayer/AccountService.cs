@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class AccontService : IAccount
+    public class AccountService : IAccount
     {
     }
 }

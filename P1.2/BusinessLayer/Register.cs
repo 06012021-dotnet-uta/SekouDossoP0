@@ -76,13 +76,6 @@ namespace BusinessLayer
                 Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
             }
             return ps;
-            // create a try/catch  to save user
-            // var currentAccount = _context.Accounts.Where(x => x.UserName == a.UserName && x.UserPassWord == a.UserPassWord).ToList(); 
-            // if(currentAccount.Count > 0){
-            //    // currentUser =  _context.Users.Where(x => x.UserName == a.UserName && x.UserPassWord == a.UserPassWord).FirstOrDefault(); 
-            //     return true;
-            // }
-            // else { return false; }
         }
 
         // userList 

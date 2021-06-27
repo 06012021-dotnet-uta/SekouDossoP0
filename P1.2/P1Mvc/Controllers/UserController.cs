@@ -89,7 +89,7 @@ namespace P1Mvc.Controllers
             }
             // if (result){
             //     // RedirectToAction("Index", "Main");
-            else { return View("LoggedInLandingPage"); }
+            else { return View("MainLandingPage"); }
             // }
             // else
             // {
