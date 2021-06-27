@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class StoreProductService : IStoreProduct
+    public class OrderService : IOrder 
     {
         // first define the context 
         private readonly P1Db _context;
 
         // create a constructor
-        public StoreProductService(P1Db context) { this._context = context; }
+        public OrderService(P1Db context) { this._context = context; }
 
-        public async Task<bool> RegisterStoreProductAsync(StoreProduct st)
+        public async Task<bool> CreateOrderAsync(Order order)
         {
-            // create a try/catch  to save user
-            await _context.StoreProducts.AddAsync(st);
+             //create a try/catch  to save user
+            await _context.Orders.AddAsync(order);
             try { await _context.SaveChangesAsync(); }
             catch (DbUpdateConcurrencyException ex)
             {
@@ -37,14 +37,13 @@ namespace BusinessLayer
 
         }
 
-        // store product List 
-        public async Task<List<StoreProduct>> StoreProductListAsync()
+         //order List 
+        public async Task<List<Order>> OrderListAsync()
         {
-            List<StoreProduct> ps = null;
+            List<Order> ps = null;
             try
             {
-                ps = _context.StoreProducts.ToList();
-               
+                ps = _context.Orders.ToList();
             }
             catch (ArgumentNullException ex)
             {
@@ -52,21 +51,35 @@ namespace BusinessLayer
             }
             return ps;
         }
-
-        // product list 
-        public async Task<List<Product>> ProductListAsync()
+        // location orders List 
+        public async Task<List<Location>> LocationOrderListAsync()
         {
-            List<Product> ps = null;
+            List<Location> ps = null;
+
             try
             {
-                ps = _context.Products.ToList();
-
+                ps = _context.Locations.ToList();
             }
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
             }
-            return ps;
+            return ps;    
+        }
+        // users orders List 
+        public async Task<List<User>> UserOrderListAsync()
+        {
+            List<User> ps = null;
+
+            try
+            {
+                ps = _context.Users.ToList();
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return ps;    
         }
 
     }

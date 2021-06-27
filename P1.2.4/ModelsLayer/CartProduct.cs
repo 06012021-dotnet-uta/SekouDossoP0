@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +11,7 @@ namespace ModelsLayer
     public class CartProduct
     {
         [Required]
-        public int CartproductId { get; set; }
+        public int CartProductId { get; set; }
 
         [ForeignKey("CartId")]
         public int CartId { get; set; }
