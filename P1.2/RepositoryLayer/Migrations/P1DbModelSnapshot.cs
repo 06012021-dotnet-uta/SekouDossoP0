@@ -19,6 +19,29 @@ namespace RepositoryLayer.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ModelsLayer.Account", b =>
+                {
+                    b.Property<int>("AccountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserPassWord")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AccountId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Accounts");
+                });
+
             modelBuilder.Entity("ModelsLayer.Cart", b =>
                 {
                     b.Property<int>("CartId")
@@ -97,6 +120,10 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("OrderId");
 
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("Orders");
                 });
 
@@ -160,6 +187,8 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("StoreId");
 
+                    b.HasIndex("LocationId");
+
                     b.ToTable("Stores");
                 });
 
@@ -207,6 +236,10 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserPassWord")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -214,6 +247,45 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ModelsLayer.Account", b =>
+                {
+                    b.HasOne("ModelsLayer.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelsLayer.Order", b =>
+                {
+                    b.HasOne("ModelsLayer.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelsLayer.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelsLayer.Store", b =>
+                {
+                    b.HasOne("ModelsLayer.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("ModelsLayer.StoreProduct", b =>

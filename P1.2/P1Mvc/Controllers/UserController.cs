@@ -78,26 +78,26 @@ namespace P1Mvc.Controllers
             return View("UserLogin");
         }
 
-        public async Task<ActionResult> UserLogin(User u)
+        public async Task<ActionResult> UserLogin( Account a)
         // public void Login(User u)
         {
-
-            List<User> userList = await _register.UserListAsync();
-            User rU = userList.Where(x => x.Email == u.Email).FirstOrDefault();
-            //bool result = await _register.LoginAsync(u);
-            if (rU != null)
-            {
-                return RedirectToAction("Index", "Main");
-               // return View("LoggedInLandingPage");
-
+            
+            var result = await _register.LoginAsync();
+            var currentAccount = result.Where(x => x.UserName == a.UserName && x.UserPassWord == a.UserPassWord).ToList(); 
+            if (currentAccount.Count>0){
+                return View("MainLandingPage");
             }
-            else
-            {
-                ViewBag.ErrorText = "Hey guy, there was an error!";
-                return RedirectToAction("Index", "Main");
-                //return View("LoggedInLandingPage");
-                //return View("UserLogin");
-            }
+            // if (result){
+            //     // RedirectToAction("Index", "Main");
+            else { return View("MainLandingPage"); }
+            // }
+            // else
+            // {
+            //     ViewBag.ErrorText = "Hey guy, there was an error!";
+            //     //return RedirectToAction("Index", "Home");
+            //     return View("LoggedInLandingPage");
+            //     //return View("UserLogin");
+            // }
         }
 
         // GET: UserController/Create

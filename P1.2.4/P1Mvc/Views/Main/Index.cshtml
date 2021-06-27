@@ -1,16 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Main Page";
 }
 
 <div class="text-center">
     <h4 class="display-4">Welcome To Shopping Bay</h4>
 </div>
+<div>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="StoreProduct" asp-action="StoreProductList">Home</a>
+
+                <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="UserListFilter">Search User</a>
+
+                <a class="navbar-brand" asp-area="" asp-controller="Order" asp-action="LocationOrder">Store Order History</a>
+
+                <a class="navbar-brand" asp-area="" asp-controller="Order" asp-action="OrderListFilter">User Order History</a>
+
+                <a class="navbar-brand" asp-area="" asp-controller="StoreProduct" asp-action="StoreProductList">Inventory</a>
+
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cart</a>
+
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+
+            </div>
+        </nav>
+    </header>
+</div>
+   
+<div>
+
+</div>
 
 <div>
-    <button class="btn-light"><a class="btn" asp-area="" asp-controller="User" asp-action="Create">Create an Account</a></button>
-    <button class="btn-light"><a class="btn" asp-area="" asp-controller="User" asp-action="Login">Login</a></button>
 
-    @* <button class="btn-light"><a class="btn" asp-area="" asp-controller="Location" asp-action="Create">Add Location</a></button>
+    <button class="btn-light"><a class="btn" asp-area="" asp-controller="Location" asp-action="Create">Add Location</a></button>
     <button class="btn-light"><a class="btn" asp-area="" asp-controller="Location" asp-action="LocationList">Location List</a></button>
 
     <button class="btn-light"><a class="btn" asp-area="" asp-controller="Order" asp-action="Create">Add Order</a></button>
@@ -27,7 +51,7 @@
     <button class="btn-light"><a class="btn" asp-area="" asp-controller="StoreProduct" asp-action="StoreProductList">Store Product List</a></button>
 
     <button class="btn-light"><a class="btn" asp-area="" asp-controller="OrderProduct" asp-action="Create">Add Product</a></button>
-    <button class="btn-light"><a class="btn" asp-area="" asp-controller="OrderProduct" asp-action="OrderProductList">Order Product List</a></button> *@
+    <button class="btn-light"><a class="btn" asp-area="" asp-controller="OrderProduct" asp-action="OrderProductList">Order Product List</a></button>
 
 
 </div>

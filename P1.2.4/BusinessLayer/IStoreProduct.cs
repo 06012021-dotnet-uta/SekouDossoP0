@@ -10,7 +10,9 @@ namespace BusinessLayer
     public interface IStoreProduct
     {
         Task<bool> RegisterStoreProductAsync(StoreProduct st);
-        Task<List<StoreProduct>> StoreProductListAsync();
-        Task<List<Product>> ProductListAsync();
+        Task<List<StoreProduct>> StoreProductListAsync(); // store product list
+        Task<List<Product>> ProductListAsync(); // product list
+        Task<List<Store>> StoreListAsync(); // store list
+        Task<List<Location>> LocationListAsync(); // location list
     }
 }

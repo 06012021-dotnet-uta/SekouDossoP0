@@ -10,7 +10,7 @@ namespace BusinessLayer
     public interface IRegisterUser
     {
         Task<bool> RegisterUserAsync(User user);
-        Task<bool> LoginAsync(User user);
+        Task<List<Account>> LoginAsync();
         Task<List<User>> UserListAsync();
     }
 }

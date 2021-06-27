@@ -32,6 +32,7 @@ namespace P1.Tests
 				LastName = "LastName",
 				Email = "Email",
 				UserPassWord = "UserPassWord",
+				UserName = "UserName",
 			};
 			bool result = false;
 			User user1;

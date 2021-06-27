@@ -33,12 +33,18 @@ namespace P1Mvc.Controllers
         {
             List<StoreProduct> storeProductList = await _sp.StoreProductListAsync();
             List<Product> products = await _sp.ProductListAsync();
-            List<Product> productList = new List<Product>();
+            List<StoreProduct> productList = new List<StoreProduct>();
 
-            foreach (var  xx in storeProductList)
+            // foreach (var  xx in storeProductList)
+            // { 
+            //         var product = products.Where(x => x.ProductId == xx.ProductId).FirstOrDefault();
+            //     productList.Add(product);
+            //     //Console.WriteLine($" Product name: {product.ProductName} -- product descrition: {product.ProductPrice}$ -- price: {sp.Quantity}");
+            // }
+            foreach (var xx in storeProductList)
             { 
-                    var product = products.Where(x => x.ProductId == xx.ProductId).FirstOrDefault();
-                productList.Add(product);
+                    //var product = products.Where(x => x.ProductId == xx.ProductId).FirstOrDefault();
+                productList.Add(xx);
                 //Console.WriteLine($" Product name: {product.ProductName} -- product descrition: {product.ProductPrice}$ -- price: {sp.Quantity}");
             }
             return View(productList);

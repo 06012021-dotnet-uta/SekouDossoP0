@@ -14,7 +14,7 @@ namespace ModelsLayer
         // constructor
 
         public User() : base() { }
-        public User(string firstName, string lastName, string email, string userPassWord) : base(firstName, lastName, email, userPassWord)
+        public User(string firstName, string lastName, string email, string userPassWord, string userName) : base(firstName, lastName, email, userPassWord, userName)
         {
 
         }

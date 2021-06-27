@@ -37,7 +37,7 @@ namespace BusinessLayer
 
         }
 
-         //userList 
+         //order List 
         public async Task<List<Order>> OrderListAsync()
         {
             List<Order> ps = null;
@@ -51,6 +51,36 @@ namespace BusinessLayer
             }
             return ps;
         }
-       
+        // location orders List 
+        public async Task<List<Location>> LocationOrderListAsync()
+        {
+            List<Location> ps = null;
+
+            try
+            {
+                ps = _context.Locations.ToList();
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return ps;    
+        }
+        // users orders List 
+        public async Task<List<User>> UserOrderListAsync()
+        {
+            List<User> ps = null;
+
+            try
+            {
+                ps = _context.Users.ToList();
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return ps;    
+        }
+
     }
 }

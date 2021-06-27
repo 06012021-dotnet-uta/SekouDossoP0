@@ -36,10 +36,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ProductPrice)
             </td>
-            @* <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> 
-            </td> *@
+            <td>
+                    @Html.ActionLink("Add", "AddProduct", "CartProduct", Model ) 
+                @* <a class="navbar-brand" asp-area="" asp-controller="CartProduct" asp-action="AddProduct">Add</a> *@
+            </td>
         </tr>
 }
     </tbody>

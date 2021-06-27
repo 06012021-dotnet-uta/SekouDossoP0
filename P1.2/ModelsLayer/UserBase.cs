@@ -36,6 +36,12 @@ namespace ModelsLayer
         [MinLength(3)]
         [Display(Name = "Password")]
         public string UserPassWord { get; set; }
+
+        [Required(ErrorMessage = "User must be at least 1 character.")]
+        [MinLength(3)]
+        
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
         
         // constructor
         public UserBase()
@@ -45,13 +51,13 @@ namespace ModelsLayer
             Email = "email";
             UserPassWord = "userPassWord";
         }
-        public UserBase(string firstName, string lastName, string email, string userPassWord)
+        public UserBase(string firstName, string lastName, string email, string userPassWord, string userName)
         {
-            //this.UserId = userId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
             this.UserPassWord = userPassWord;
+            this.UserName = userName;
         }
 
         // class methode

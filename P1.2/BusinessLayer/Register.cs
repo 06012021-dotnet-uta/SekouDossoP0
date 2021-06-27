@@ -21,14 +21,10 @@ namespace BusinessLayer
         // register new customer 
         public async Task<bool> RegisterUserAsync(User user)
         {
-            
-            
             // create a try/catch  to save user
             await _context.Users.AddAsync(user);
             try {
                 await _context.SaveChangesAsync();
-                //await _context.SaveChangesAsync();
-
             }
             catch (DbUpdateConcurrencyException ex)
             {
@@ -40,6 +36,23 @@ namespace BusinessLayer
                 Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
                 return false;
             }
+            // create account
+            var userAccount = new Account( user.UserName , user.UserPassWord);
+            await _context.Accounts.AddAsync(userAccount);
+            try {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+            catch (DbUpdateException ex)
+            {       //change this to logging
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+
             // currentUser
             currentUser = user;
             // instantiate a shopping cart iimediately for the new customer 
@@ -49,18 +62,20 @@ namespace BusinessLayer
             return true;
         }
         
-        // log in
-        public async Task<bool> LoginAsync(User user)
+        // log in LoginAsync
+        
+        public async Task<List<Account>> LoginAsync()
         {
-            // create a try/catch  to save user
-            try { var currentUser = _context.Users.ToList().Where(x => x.Email == user.Email).FirstOrDefault(); }
-            catch (Exception ex)
+            List<Account> ps = null;
+            try
             {
-                Console.WriteLine($"User not found => {ex.InnerException}");
-                return false;
+                ps = _context.Accounts.ToList();
             }
-            currentUser = user;
-            return true;
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return ps;
         }
 
         // userList 
