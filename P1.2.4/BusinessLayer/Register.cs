@@ -22,15 +22,9 @@ namespace BusinessLayer
         // register new customer 
         public async Task<bool> RegisterUserAsync(User user)
         {
-            
-            
             // create a try/catch  to save user
             await _context.Users.AddAsync(user);
-            try {
-                await _context.SaveChangesAsync();
-                //await _context.SaveChangesAsync();
-
-            }
+            try { await _context.SaveChangesAsync(); }
             catch (DbUpdateConcurrencyException ex)
             {
                 Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
@@ -63,8 +57,22 @@ namespace BusinessLayer
             currentUser = user;
             // instantiate a shopping cart iimediately for the new customer 
             var newCart = new Cart(user.UserId);
-            _context.Carts.Add(newCart);
-            _context.SaveChanges();
+            await _context.Carts.AddAsync(newCart);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+            catch (DbUpdateException ex)
+            {       //change this to logging
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+            // _context.SaveChanges();
             return true;
         }
         

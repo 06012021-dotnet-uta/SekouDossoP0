@@ -13,6 +13,7 @@ namespace BusinessLayer
     {
         // first define the context 
         private readonly P1Db _context;
+        private List<Location> ps;
 
         // create a constructor
         public LocationService(P1Db context) { this._context = context; }
@@ -40,7 +41,7 @@ namespace BusinessLayer
         // userList 
         public async Task<List<Location>> LocationListAsync()
         {
-            List<Location> ps = null;
+            // List<Location> ps = null;
             try
             {
                 ps = _context.Locations.ToList();

@@ -13,6 +13,8 @@ namespace BusinessLayer
     {
         // first define the context 
         private readonly P1Db _context;
+        private List<StoreProduct> ps;
+        private List<Product> pl;
 
         // create a constructor
         public StoreProductService(P1Db context) { this._context = context; }
@@ -40,7 +42,7 @@ namespace BusinessLayer
         // store product List 
         public async Task<List<StoreProduct>> StoreProductListAsync()
         {
-            List<StoreProduct> ps = null;
+            // List<StoreProduct> ps = null;
             try
             {
                 ps = _context.StoreProducts.ToList();
@@ -56,17 +58,17 @@ namespace BusinessLayer
         // product list 
         public async Task<List<Product>> ProductListAsync()
         {
-            List<Product> ps = null;
+           // List<Product> pl = null;
             try
             {
-                ps = _context.Products.ToList();
+                pl = _context.Products.ToList();
 
             }
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
             }
-            return ps;
+            return pl;
         }
 
         // Store list 

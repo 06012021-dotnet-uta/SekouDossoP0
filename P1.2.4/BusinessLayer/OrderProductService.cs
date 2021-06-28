@@ -13,6 +13,7 @@ namespace BusinessLayer
     {
         // DbContext 
         private readonly P1Db _context;
+        private List<OrderProduct> ps;
         // constructor 
         public OrderProductService(P1Db context)
         {
@@ -37,7 +38,7 @@ namespace BusinessLayer
         }
         public async Task<List<OrderProduct>> OrderProductListAsync()
         {
-            List<OrderProduct> ps = null;
+            // List<OrderProduct> ps = null;
             try
             {
                 ps = _context.OrderProducts.ToList();

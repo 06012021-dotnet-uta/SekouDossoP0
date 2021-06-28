@@ -13,6 +13,7 @@ namespace BusinessLayer
     {
         // define a private prop for context
         private readonly P1Db  _context;
+        private List<Store> ps;
         // constructor 
         public StoreService (P1Db context)
         {
@@ -42,7 +43,7 @@ namespace BusinessLayer
         // userList 
         public async Task<List<Store>> StoreListAsync()
         {
-            List<Store> ps = null;
+           // List<Store> ps = null;
             try
             {
                 ps = _context.Stores.ToList();

@@ -13,6 +13,9 @@ namespace BusinessLayer
     {
         // first define the context 
         private readonly P1Db _context;
+        private List<Order> ps;
+        private List<Location> ls;
+        private List<User> ul;
 
         // create a constructor
         public OrderService(P1Db context) { this._context = context; }
@@ -40,7 +43,7 @@ namespace BusinessLayer
          //order List 
         public async Task<List<Order>> OrderListAsync()
         {
-            List<Order> ps = null;
+           // List<Order> ps = null;
             try
             {
                 ps = _context.Orders.ToList();
@@ -54,32 +57,32 @@ namespace BusinessLayer
         // location orders List 
         public async Task<List<Location>> LocationOrderListAsync()
         {
-            List<Location> ps = null;
+            // List<Location> ls = null;
 
             try
             {
-                ps = _context.Locations.ToList();
+                ls = _context.Locations.ToList();
             }
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
             }
-            return ps;    
+            return ls;    
         }
         // users orders List 
         public async Task<List<User>> UserOrderListAsync()
         {
-            List<User> ps = null;
+            List<User> ul = null;
 
             try
             {
-                ps = _context.Users.ToList();
+                ul = _context.Users.ToList();
             }
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
             }
-            return ps;    
+            return ul;    
         }
 
     }

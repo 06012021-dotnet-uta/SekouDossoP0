@@ -10,14 +10,16 @@ namespace ModelsLayer
 {
     public class CartProduct
     {
-        [Required]
+        [key]
         public int CartProductId { get; set; }
 
         [ForeignKey("CartId")]
         public int CartId { get; set; }
+        public Cart Cart { get; set; }
 
-        [ForeignKey("Productid")]
+        [ForeignKey("ProductId")]
         public int ProductId { get; set; }
+        public Product Product { get; set; }
 
         [NotMapped]
         public List<Product> Products { get; set; }
@@ -27,13 +29,13 @@ namespace ModelsLayer
 
         public CartProduct()
         {
-            this.ProductId = 1;
-            this.Quantity = 1;
+            CartId = 1;
+            ProductId = 1;
         }
-        public CartProduct(int productId, int quantity)
+        public CartProduct(int cartId , int productId)
         {
+            this.CartId = cartId;
             this.ProductId = productId;
-            this.Quantity = quantity;
         }
     }
 }

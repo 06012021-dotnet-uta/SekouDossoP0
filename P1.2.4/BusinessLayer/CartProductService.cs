@@ -13,40 +13,42 @@ namespace BusinessLayer
     {
         // first define the context 
         private readonly P1Db _context;
+        private List<CartProduct> ps;
+        private List<Product> pl;
+        static List<Product> Products { get; set; }
 
         // create a constructor
-        public CartProductService(P1Db context) { this._context = context; }
-        // currentUser
-        // User currentUser = null;
-        // register new customer 
+        public CartProductService(P1Db context)
+        {
+            this._context = context;
+            Products = new List<Product>();
+        }
+
 
         // AddProductAsync
         public async Task<bool> AddProductAsync(Product p)
         {
-            var cartProduct = new CartProduct(p.ProductId, 1);
-            // create a try/catch  to save user
-            await _context.CartProducts.AddAsync(cartProduct);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
-                return false;
-            }
-            catch (DbUpdateException ex)
-            {       //change this to logging
-                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
-                return false;
-            }
+            Products.Add(p);
+            var n = new CartProduct(1, p.ProductId);
+            await _context.AddAsync(n);
+            await _context.SaveChangesAsync();
+
             return true;
+        }
+
+        // list OfCartProduct 
+        public async Task<List<CartProduct>> ListOfCartProductsAsync()
+        {
+            //  ps = _context.Users.ToList();
+            ps = _context.CartProducts.ToList();
+
+            return ps;
         }
 
         //CartProductsAsync();
         public async Task<List<CartProduct>> CartProductsAsync()
         {
-            List<CartProduct> ps = null;
+            // List<CartProduct> ps = null;
             try
             {
                 ps = _context.CartProducts.ToList();
@@ -58,6 +60,19 @@ namespace BusinessLayer
             return ps;
         }
 
-
+        // ListOfProductsAsync
+        public async Task<List<Product>> ListOfProductsAsync()
+        {
+            // List<Product> pl = null;
+            try
+            {
+                pl = _context.Products.ToList();
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return pl;
+        }
     }
 }
