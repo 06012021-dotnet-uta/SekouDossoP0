@@ -16,6 +16,7 @@ namespace BusinessLayer
         private List<CartProduct> ps;
         private List<Product> pl;
         static List<Product> Products { get; set; }
+        static User User;
 
         // create a constructor
         public CartProductService(P1Db context)
@@ -74,5 +75,23 @@ namespace BusinessLayer
             }
             return pl;
         }
+
+        // checkout 
+        public async Task<bool> CheckoutAsync( )
+        {
+            // create order
+            // user 
+                var user = AccountService.CurrentUser();
+                Console.WriteLine(user);
+            //store 
+            // create orderProduct 
+            // foreach product in cartprodut 
+            //     add the product and set the quantity to 1
+            // create account
+
+            // currentUser
+            return true;
+        }
+
     }
 }

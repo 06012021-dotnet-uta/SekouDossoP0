@@ -14,6 +14,10 @@ namespace BusinessLayer
         // DbContext 
         private readonly P1Db _context;
         private List<Product> ps;
+        private List<StoreProduct> stp;
+        private List<Store> stl;
+        private List<Location> ll;
+        static Location _location;
         // constructor 
         public ProductService (P1Db context)
         {
@@ -48,6 +52,63 @@ namespace BusinessLayer
                 Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
             }
             return ps;
+        }
+
+        // product list 
+        public async Task<List<StoreProduct>> StoreProductListAsync()
+        {
+            // List<Product> stp = null;
+            try
+            {
+                stp = _context.StoreProducts.ToList();
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return stp;
+        }
+
+        // Store list 
+        public async Task<List<Store>> StoreListAsync()
+        {
+            //List<Store> stl = null;
+            try
+            {
+                stl = _context.Stores.ToList();
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return stl;
+        }
+
+        // location list 
+        public async Task<List<Location>> LocationListAsync()
+        {
+            // List<Location> ll = null;
+            try
+            {
+                ll = _context.Locations.ToList();
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+            }
+            return ll;
+        }
+
+        // get Location await _product.GetLocationAsync(searchString);
+        public async Task<bool> GetLocationAsync(string searchString)
+        {
+
+            _location = _context.Locations.ToList().Where(x => x.LocationName == searchString).FirstOrDefault();
+            Console.WriteLine(_location);
+            return true;
         }
     }
 }

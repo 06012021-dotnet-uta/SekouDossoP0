@@ -86,9 +86,16 @@ namespace P1Mvc.Controllers
             }
             ViewBag.data = total ;
             return View(productList);
-
         }
 
+        // checkout 
+        public async Task<ActionResult> Checkout()
+        {
+
+            var x = await _cp.CheckoutAsync();
+            
+            return View();
+        }
 
         // POST: CartProductController/Create
         [HttpPost]
