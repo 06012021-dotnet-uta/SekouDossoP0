@@ -19,10 +19,20 @@ namespace BusinessLayer
         private List<Location> ll;
         static Location _location;
         // constructor 
+        /// <summary>
+        ///  create constructor to make the dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public ProductService (P1Db context)
         {
             this._context = context;
         }
+
+        /// <summary>
+        ///  Admin privilege
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public async Task<bool> RegisterProductAsync(Product product)
         {
             await _context.Products.AddAsync(product);
@@ -40,6 +50,11 @@ namespace BusinessLayer
 
             return true;
         }
+
+        /// <summary>
+        /// get the list of all order of  all products
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Product>> ProductListAsync()
         {
             // List<Product> ps = null;
@@ -54,7 +69,11 @@ namespace BusinessLayer
             return ps;
         }
 
-        // product list 
+        // store product list 
+        /// <summary>
+        ///  get the list of all order of  all stock in StoreProduct
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<StoreProduct>> StoreProductListAsync()
         {
             // List<Product> stp = null;
@@ -71,6 +90,10 @@ namespace BusinessLayer
         }
 
         // Store list 
+        /// <summary>
+        ///  get the list of all order of  all Store
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Store>> StoreListAsync()
         {
             //List<Store> stl = null;
@@ -87,6 +110,10 @@ namespace BusinessLayer
         }
 
         // location list 
+        /// <summary>
+        ///  get the list of all order of  all locations
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Location>> LocationListAsync()
         {
             // List<Location> ll = null;
@@ -103,6 +130,11 @@ namespace BusinessLayer
         }
 
         // get Location await _product.GetLocationAsync(searchString);
+        /// <summary>
+        ///  get location info when user select location for shopping
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
         public async Task<bool> GetLocationAsync(string searchString)
         {
 
@@ -112,6 +144,10 @@ namespace BusinessLayer
         }
 
         // current location
+        /// <summary>
+        ///  save location info to make it available later
+        /// </summary>
+        /// <returns></returns>
         public static Location CurrentLocation()
         {
             return _location;

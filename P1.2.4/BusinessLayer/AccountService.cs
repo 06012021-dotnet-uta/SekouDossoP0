@@ -16,13 +16,21 @@ namespace BusinessLayer
         static User _user;
 
         // create a constructor
+        /// <summary>
+        /// create constructor to make the dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public AccountService(P1Db context) { 
             this._context = context;
             _user = new User();
         }
 
         // login  
-        // log in [P1Db].[dbo].[Accounts]
+        /// <summary>
+        ///  Afeter Login successefully I save the user info here to make it available later.
+        /// </summary>
+        /// <param name="currentUser"></param>
+        /// <returns></returns>
         public async Task<List<Account>> LoginAsync(Account currentUser)
         {
             // List<Account> ps = null;
@@ -47,6 +55,10 @@ namespace BusinessLayer
         }
 
         // account List 
+        /// <summary>
+        /// get the list of all order of  all accounts to search for current user.
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Account>> AccountListAsync()
         {
 
@@ -66,12 +78,14 @@ namespace BusinessLayer
         }
 
         // current user
+        /// <summary>
+        ///  I save current user info here to make it available later.
+        /// </summary>
+        /// <returns></returns>
         public static User CurrentUser()
         {
             return _user;
         }
-
-
-
+        
     }
 }

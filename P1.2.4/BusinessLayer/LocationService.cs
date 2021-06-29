@@ -16,8 +16,17 @@ namespace BusinessLayer
         private List<Location> ps;
 
         // create a constructor
+        /// <summary>
+        ///  constructor for dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public LocationService(P1Db context) { this._context = context; }
 
+        /// <summary>
+        /// Admin privilege create new location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns> bool </returns>
         public async Task<bool> RegisterLocationAsync(Location location)
         {
             // create a try/catch  to save user
@@ -37,8 +46,13 @@ namespace BusinessLayer
             return true;
 
         }
+        
 
         // userList 
+        /// <summary>
+        /// get location list 
+        /// </summary>
+        /// <returns> ps </returns>
         public async Task<List<Location>> LocationListAsync()
         {
             // List<Location> ps = null;

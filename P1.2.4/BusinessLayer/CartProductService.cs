@@ -19,6 +19,10 @@ namespace BusinessLayer
         static User User;
 
         // create a constructor
+        /// <summary>
+        /// create constructor to make the dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public CartProductService(P1Db context)
         {
             this._context = context;
@@ -27,6 +31,11 @@ namespace BusinessLayer
 
 
         // AddProductAsync
+        /// <summary>
+        /// Admin privilege
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public async Task<bool> AddProductAsync(Product p)
         {
             Products.Add(p);
@@ -38,6 +47,10 @@ namespace BusinessLayer
         }
 
         // list OfCartProduct 
+        /// <summary>
+        ///  get the list of all order of  all CartProduct.
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<CartProduct>> ListOfCartProductsAsync()
         {
             //  ps = _context.Users.ToList();
@@ -47,6 +60,10 @@ namespace BusinessLayer
         }
 
         //CartProductsAsync();
+        /// <summary>
+        ///  get the list of all order of  all CartProduct
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<CartProduct>> CartProductsAsync()
         {
             // List<CartProduct> ps = null;
@@ -62,6 +79,10 @@ namespace BusinessLayer
         }
 
         // ListOfProductsAsync
+        /// <summary>
+        /// get the list of all order of  all Products
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Product>> ListOfProductsAsync()
         {
             // List<Product> pl = null;
@@ -77,6 +98,15 @@ namespace BusinessLayer
         }
 
         // checkout 
+        /// <summary>
+        ///  this is a transaction
+        /// all pass together or faill together 
+        /// first create order 
+        /// get the id of the last order 
+        /// check for stock disponibility
+        /// place order is stock is enougth
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> CheckoutAsync( )
         {
             // create order
@@ -129,6 +159,10 @@ namespace BusinessLayer
             }
 
             // delete all record in cartproduct table 
+            /// <summary>
+            ///  Empty cart afert checkout
+            /// </summary>
+            /// <returns></returns>
             var emptyCart =  _context.CartProducts.ToList();
             foreach( var x in emptyCart) { _context.CartProducts.Remove(x); }
             _context.SaveChanges();

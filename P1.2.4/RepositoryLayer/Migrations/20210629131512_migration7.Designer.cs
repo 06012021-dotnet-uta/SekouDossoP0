@@ -10,8 +10,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(P1Db))]
-    [Migration("20210629014119_migration6")]
-    partial class migration6
+    [Migration("20210629131512_migration7")]
+    partial class migration7
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
-                        
 
                     b.Property<string>("UserPassWord")
                         .HasColumnType("nvarchar(max)");
@@ -250,13 +249,16 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserPassWord")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
+
+                    b.HasAlternateKey("UserName");
 
                     b.ToTable("Users");
                 });
