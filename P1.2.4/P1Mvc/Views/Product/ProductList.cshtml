@@ -9,9 +9,19 @@
 <p>
     <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Enter Location Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
+            <th>
+                Store
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
@@ -25,8 +35,12 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
+            <td>
+                @ViewBag.searchString
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
@@ -36,11 +50,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ProductPrice)
             </td>
-            @* <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> 
-            </td> *@
+            <td>
+                @Html.ActionLink("Add to cart", "CreateNewCartProduct", "CartProduct", item)
+            </td>
         </tr>
-}
+        }
     </tbody>
 </table>

@@ -13,13 +13,17 @@ namespace BusinessLayer
         // first define the context 
         private readonly P1Db _context;
         private List<Account> ps;
+        static User _user;
 
         // create a constructor
-        public AccountService(P1Db context) { this._context = context; }
+        public AccountService(P1Db context) { 
+            this._context = context;
+            _user = new User();
+        }
 
         // login  
         // log in [P1Db].[dbo].[Accounts]
-        public async Task<List<Account>> LoginAsync()
+        public async Task<List<Account>> LoginAsync(Account currentUser)
         {
             // List<Account> ps = null;
             // List<Account> ps = new List<Account>();
@@ -35,6 +39,10 @@ namespace BusinessLayer
             {
                 Console.WriteLine($"There was a problem gettign the players list => {ex}");
             }
+
+            _user = _context.Users.ToList().Where(x => x.UserName == currentUser.UserName).FirstOrDefault();
+            //Console.WriteLine($"user => {User}");
+
             return ps;
         }
 
@@ -56,6 +64,14 @@ namespace BusinessLayer
             }
             return ps;
         }
+
+        // current user
+        public static User CurrentUser()
+        {
+            return _user;
+        }
+
+
 
     }
 }

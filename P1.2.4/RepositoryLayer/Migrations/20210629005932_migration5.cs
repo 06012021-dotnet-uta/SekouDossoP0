@@ -2,7 +2,7 @@
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class migration11 : Migration
+    public partial class migration5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

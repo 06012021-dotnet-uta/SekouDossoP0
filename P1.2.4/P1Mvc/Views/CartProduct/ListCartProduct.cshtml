@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ModelsLayer.Product>
+
+@{
+    ViewData["Title"] = "ListCartProduct";
+}
+
+<h1>Shopping Cart</h1>
+
+<p>
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <div>
+        <h2> Total :  @ViewBag.data $</h2> 
+    </div>
+    <td>
+
+        <a class="navbar-brand" asp-area="" asp-controller="CartProduct" asp-action="Checkout">Checkout</a>
+    </td>
+</table>

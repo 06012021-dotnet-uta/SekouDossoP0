@@ -4,7 +4,7 @@
     ViewData["Title"] = "StoreProductList";
 }
 
-<h1>StoreProductList</h1>
+<h1>Order by ZipCode by default.</h1>
 
 <p>
     <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
@@ -12,7 +12,7 @@
 @using (Html.BeginForm())
 {
     <p>
-        Find by UserId: @Html.TextBox("SearchString")
+        Find by Location Name: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
 }

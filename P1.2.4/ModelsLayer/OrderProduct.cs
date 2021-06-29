@@ -10,19 +10,26 @@ namespace ModelsLayer
 {
     public class OrderProduct
     {
-        [Required]
+        [key]
         public int OrderProductId { get; set; }
 
 
-        [ForeignKey("Order")]
+        [ForeignKey("OrderId")]
         public int OrderId { get; set; }
-        // public Order Order { get; set; }
+        public Order Order { get; set; }
 
-        [ForeignKey("Product")]
+        [ForeignKey("ProductId")]
         public int ProductId { get; set; }
-        // public Product Product { get; set; }
+        public Product Product { get; set; }
 
         [Required]
         public int Quantity { get; set; }
+
+        public OrderProduct(int orderId, int productId, int quantity)
+        {
+            this.OrderId = orderId;
+            this.ProductId = productId;
+            this.Quantity = quantity;
+        }
     }
 }

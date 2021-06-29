@@ -9,7 +9,13 @@ namespace BusinessLayer
 {
     public interface ICartProduct
     {
+        //Task<bool> AddProductAsync(Product p);
         Task<bool> AddProductAsync(Product p);
         Task<List<CartProduct>> CartProductsAsync();
+        Task<List<CartProduct>> ListOfCartProductsAsync();
+
+        Task<List<Product>> ListOfProductsAsync();  // product list
+        Task<bool> CheckoutAsync(); // checkout and empty cart
+     
     }
 }

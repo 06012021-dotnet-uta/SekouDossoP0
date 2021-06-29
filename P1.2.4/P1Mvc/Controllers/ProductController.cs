@@ -33,9 +33,39 @@ namespace P1Mvc.Controllers
             return View();
         }
         // Store product
-        public async Task<ActionResult> ProductList()
+        public async Task<ActionResult> ProductList(string searchString)
         {
-            List<Product> productList = await _product.ProductListAsync();
+            ViewBag.searchString = "";
+            var productList = await _product.ProductListAsync();
+           var lacationList1 = await _product.LocationListAsync();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                await _product.GetLocationAsync(searchString);
+                var lacationList = lacationList1.Where(u => u.LocationName.Contains(searchString));
+                ViewBag.searchString = lacationList.FirstOrDefault().LocationName;
+                List<Store> storeList = await _product.StoreListAsync();
+                List<StoreProduct> storeProductList = await _product.StoreProductListAsync();
+                List<Product> products = await _product.ProductListAsync();
+                productList = new List<Product>();
+
+                foreach (var xx in lacationList)
+                {
+                    var stores = storeList.Where(x => x.LocationId == xx.LocationId).ToList();
+                    foreach (var s in stores)
+                    {
+                        var storeProducts = storeProductList.Where(x => x.StoreId == s.StoreId).ToList();
+                        foreach (var spdt in storeProducts)
+                        {
+                            var product = products.Where(x => x.ProductId == spdt.ProductId).FirstOrDefault();
+                            productList.Add(product);
+                        }
+                    }
+                }
+            }
+           //var loctionnn = await _product.LocationListAsync();
+           //string ln = loctionnn.Where(u => u.LocationName.Contains(searchString)).FirstOrDefault().LocationName;
+
+            
             return View(productList);
         }
 

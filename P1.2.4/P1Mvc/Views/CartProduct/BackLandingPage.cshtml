@@ -1,0 +1,17 @@
+﻿@model ModelsLayer.CartProduct
+
+@{
+    ViewData["Title"] = "go back to shoppping or checkout ?";
+}
+
+<h1>Click bellow</h1>
+
+<p>@ViewData["Title"]</p>
+
+<h1>@ViewData["Current Products"]</h1>
+
+@*buttons to view a Order.*@
+
+<div>
+    <button class="btn-light"><a class="btn" asp-area="" asp-controller="Product" asp-action="ProductList">Shooping/Checkout!</a></button>
+</div>

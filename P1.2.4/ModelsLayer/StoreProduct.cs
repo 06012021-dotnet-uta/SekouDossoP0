@@ -10,7 +10,7 @@ namespace ModelsLayer
 {
     public class StoreProduct
     {
-        [Required]
+        [key]
         public int StoreProductId { get; set; }
 
 

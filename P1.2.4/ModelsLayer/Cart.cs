@@ -10,17 +10,18 @@ namespace ModelsLayer
 {
     public class Cart
     {
-        [Required]
+        [key]
         public int CartId { get; set; }
 
         [ForeignKey("UserId")]
         public int UserId { get; set; }
+        public User User { get; set; }
+        public Cart(){
+            UserId = 1;
+        }
         public Cart(int userId)
         {
-            // this.CartId = cartId;
             this.UserId = userId;
         }
-
-
     }
 }
