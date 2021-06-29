@@ -15,11 +15,20 @@ namespace BusinessLayer
         private readonly P1Db  _context;
         private List<Store> ps;
         // constructor 
+        /// <summary>
+        /// create constructor to make the dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public StoreService (P1Db context)
         {
             this._context = context;
         }
         //implement IStore methods
+        /// <summary>
+        ///  Admin privilege
+        /// </summary>
+        /// <param name="store"></param>
+        /// <returns></returns>
         public async Task<bool> RegisterStoreAsync(Store store)
         {
             // create a try/catch  to save user
@@ -41,6 +50,10 @@ namespace BusinessLayer
         }
 
         // userList 
+        /// <summary>
+        /// get the list of all order of  all users
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Store>> StoreListAsync()
         {
            // List<Store> ps = null;

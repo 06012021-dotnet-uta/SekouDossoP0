@@ -37,7 +37,7 @@ namespace P1Mvc.Controllers
         {
             ViewBag.searchString = "";
             var productList = await _product.ProductListAsync();
-           var lacationList1 = await _product.LocationListAsync();
+            var lacationList1 = await _product.LocationListAsync();
             if (!String.IsNullOrEmpty(searchString))
             {
                 await _product.GetLocationAsync(searchString);
@@ -62,11 +62,7 @@ namespace P1Mvc.Controllers
                     }
                 }
             }
-           //var loctionnn = await _product.LocationListAsync();
-           //string ln = loctionnn.Where(u => u.LocationName.Contains(searchString)).FirstOrDefault().LocationName;
-
-            
-            return View(productList);
+            return View(productList);           
         }
 
         // GET: ProductController/Create

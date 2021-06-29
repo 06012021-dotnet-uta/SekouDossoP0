@@ -15,10 +15,19 @@ namespace BusinessLayer
         private readonly P1Db _context;
         private List<OrderProduct> ps;
         // constructor 
+        /// <summary>
+        /// create constructor to make the dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public OrderProductService(P1Db context)
         {
             this._context = context;
         }
+        /// <summary>
+        /// register order products
+        /// </summary>
+        /// <param name="op"></param>
+        /// <returns></returns>
         public async Task<bool> RegisterOrderProductAsync(OrderProduct op)
         {
             await _context.OrderProducts.AddAsync(op);
@@ -36,6 +45,10 @@ namespace BusinessLayer
 
             return true;
         }
+        /// <summary>
+        /// get the order product list 
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<OrderProduct>> OrderProductListAsync()
         {
             // List<OrderProduct> ps = null;

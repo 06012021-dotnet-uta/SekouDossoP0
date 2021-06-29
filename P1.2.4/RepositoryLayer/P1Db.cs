@@ -38,6 +38,10 @@ namespace RepositoryLayer
             //     options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=P1Db;Trusted_Connection=True;");
             // }
         }
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<User>().HasAlternateKey(u => u.UserName);
+        // }
 
     }
 }

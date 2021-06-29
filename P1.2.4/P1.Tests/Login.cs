@@ -6,14 +6,14 @@ using System;
 using Xunit;
 using ModelsLayer;
 //you can give the page an alias to differentiate between ambiguously named duos.
+using System.Collections.Generic;
 
-using BRegister = BusinessLayer.Register;
-
+using BAccountService = BusinessLayer.AccountService;
 
 namespace P1.Tests
 {
 
-	public class UnitTest1
+	public class Login
 	{
 		//create the in-memory Db //  installed EF Core
 			DbContextOptions<P1Db> options = new DbContextOptionsBuilder<P1Db>()
@@ -21,28 +21,38 @@ namespace P1.Tests
 			.Options;
 
 		[Fact]
-		public async Task RegisterUserInsertsUserCorrectly()
+		public async Task LoginWithCorrectCredential()
 		{
 			// arrange
 			//createa a user to inset into the inmemory db.
+			Account account = new Account()
+            {
+                UserName = "userName",
+                UserPassWord = "userPassWord",
+            };
 			User user = new User()
 			{
-
-				FirstName = "FirstName",
-				LastName = "LastName",
-				Email = "Email",
-				UserPassWord = "UserPassWord",
+				FirstName = "firstName",
+				LastName = "lastName",
+				Email = "email",
+				UserPassWord = "userPassWord",
+				UserName = "userName",
 			};
-			bool result = false;
-			User user1;
+			//bool result = false ;
+			//List<Account> testAccount;
+            User user1;
+            Account account1;
+
 
 			using (var context = new P1Db(options))
 			{
 				context.Database.EnsureDeleted();// delete any Db fro a previous test
 				context.Database.EnsureCreated();// create anew the Db... you will need ot seed it again.
 				context.Users.Add(user);
+                context.Accounts.Add(account);
 				context.SaveChanges();
-				user1 = context.Users.Where(x => x.FirstName == "FirstName").FirstOrDefault();
+                user1 = context.Users.Where(x => x.UserName == "userName" && x.UserPassWord == "userPassWord").FirstOrDefault();
+				account1 = context.Accounts.Where(x => x.UserName == "userName" && x.UserPassWord == "userPassWord").FirstOrDefault();
 			}
 
 			// act
@@ -55,26 +65,23 @@ namespace P1.Tests
 				context.Database.EnsureCreated();// create anew the Db... you will need ot seed it again.
 
 				//instantiate the RpsGameClass that we are going to unit test
-				BRegister register = new BRegister(context);
-				result = await register.RegisterUserAsync(user);
+				BAccountService bAccount = new BAccountService(context);
+				bool result = await bAccount.LoginAsync(account);
+                //int countAccount = await context.Accounts.CountAsync();
 
 				context.SaveChanges();
 				//}
 
 				//assert
 				// verify the the result was as expected
-				//using (var context = new RpsGameDb(options))
-				//{
-				int allUsersInP1Db = await context.Users.CountAsync();
-				user.UserId = 1;
-				var u = context.Users.Where(x => x.FirstName == "FirstName").FirstOrDefault();
-				Assert.True(result);
-				Assert.Equal(1, allUsersInP1Db);
-				Assert.NotNull(u);
-				Assert.Equal(1, u.UserId);
-				Assert.Contains(user1, context.Users);
-				Assert.Equal(user1, u);
-				Assert.Equal("LastName", user1.LastName);
+	
+				//int allUsersInP1Db = await context.Users.CountAsync();
+				//user.UserId = 1;
+				//var u = context.Users.Where(x => x.FirstName == "FirstName").FirstOrDefault();
+				//Assert.True(result.Count>0);
+				//Assert.Equal(1, allUsersInP1Db);
+				Assert.NotNull(user1);
+                Assert.False(result);
 
 			}
 		}

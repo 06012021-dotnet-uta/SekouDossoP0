@@ -28,9 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.OrderDate)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.Location)
-            </th>
+            </th> *@
             <th></th>
         </tr>
     </thead>
@@ -48,9 +48,8 @@
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LocationId)
-            </td>
-            
+                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+            </td>    
         </tr>
         }
     </tbody>

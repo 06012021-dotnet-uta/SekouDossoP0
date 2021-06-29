@@ -33,11 +33,15 @@ namespace P1Mvc.Controllers
         // login 
         public async Task<ActionResult> UserLogin(Account a)
         {
-            await _a.LoginAsync(a);
-            List<Account> accountList = await _a.AccountListAsync();
-            List<Account> accounts = accountList.Where(x => x.UserName==a.UserName && x.UserPassWord==a.UserPassWord).ToList();
-            if (accounts.Count<1) { return View("HomeLandingPage");}
-             else { return View("MainLandingPage"); }
+            
+            bool r =  await _a.LoginAsync(a);
+            if (r) { return View("MainLandingPage");}
+             else { return View("HomeLandingPage"); }
+            // await _a.LoginAsync(a);
+            // List<Account> accountList = await _a.AccountListAsync();
+            // List<Account> accounts = accountList.Where(x => x.UserName==a.UserName && x.UserPassWord==a.UserPassWord).ToList();
+            // if (accounts.Count<1) { return View("HomeLandingPage");}
+            //  else { return View("MainLandingPage"); }
         }
 
         // Account list 

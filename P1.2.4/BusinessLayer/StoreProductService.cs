@@ -17,7 +17,17 @@ namespace BusinessLayer
         private List<Product> pl;
 
         // create a constructor
+        /// <summary>
+        /// create constructor to make the dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public StoreProductService(P1Db context) { this._context = context; }
+
+        /// <summary>
+        ///  Admin privilege
+        /// </summary>
+        /// <param name="st"></param>
+        /// <returns></returns>
 
         public async Task<bool> RegisterStoreProductAsync(StoreProduct st)
         {
@@ -40,6 +50,11 @@ namespace BusinessLayer
         }
 
         // store product List 
+        /// <summary>
+        /// get the list of all order of  all  StoreProduct 
+        /// </summary>
+        /// <returns></returns>
+
         public async Task<List<StoreProduct>> StoreProductListAsync()
         {
             // List<StoreProduct> ps = null;
@@ -56,6 +71,10 @@ namespace BusinessLayer
         }
 
         // product list 
+        /// <summary>
+        /// get the list of all order of  all Product
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Product>> ProductListAsync()
         {
            // List<Product> pl = null;
@@ -72,6 +91,10 @@ namespace BusinessLayer
         }
 
         // Store list 
+        /// <summary>
+        ///  get the list of all order of  all Store
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Store>> StoreListAsync()
         {
             List<Store> ps = null;
@@ -88,6 +111,10 @@ namespace BusinessLayer
         }
 
         // location list 
+        /// <summary>
+        /// get the list of all order of  all locations
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Location>> LocationListAsync()
         {
             List<Location> ps = null;

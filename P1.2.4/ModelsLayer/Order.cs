@@ -9,9 +9,11 @@ namespace ModelsLayer
         // instance var 
          [Key]
          public int OrderId { get; set; }
-        [Required]
         
-         public DateTime OrderDate { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime OrderDate { get; set; }
         //[Required]
         [ForeignKey("User")]
          public int UserId { get; set; }

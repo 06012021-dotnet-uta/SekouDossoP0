@@ -16,10 +16,19 @@ namespace BusinessLayer
         private List<User> ps ;
 
         // create a constructor
+        /// <summary>
+        /// create constructor to make the dependency injection
+        /// </summary>
+        /// <param name="context"></param>
         public Register(P1Db context) { this._context = context; }
         // currentUser
         User currentUser = null;
         // register new customer 
+        /// <summary>
+        ///  register new user before login
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public async Task<bool> RegisterUserAsync(User user)
         {
             // create a try/catch  to save user
@@ -77,6 +86,11 @@ namespace BusinessLayer
         }
         
         // log in
+        /// <summary>
+        /// not using this login , I will clean it later
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public async Task<bool> LoginAsync(User user)
         {
             // create a try/catch  to save user
@@ -91,6 +105,10 @@ namespace BusinessLayer
         }
 
         // userList 
+        /// <summary>
+        ///  get the list of all order of  all Users
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<User>> UserListAsync()
         {
             // List<User> ps = null;
