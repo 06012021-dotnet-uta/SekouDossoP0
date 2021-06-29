@@ -84,12 +84,53 @@ namespace BusinessLayer
                 var user = AccountService.CurrentUser();
                 Console.WriteLine(user);
             //store 
+            var location = ProductService.CurrentLocation();
+            Console.WriteLine(location);
             // create orderProduct 
-            // foreach product in cartprodut 
-            //     add the product and set the quantity to 1
-            // create account
+            var newOrder = new Order(DateTime.Today, user.UserId, location.LocationId);
+            await _context.Orders.AddAsync(newOrder);
+            try { await _context.SaveChangesAsync(); }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+            catch (DbUpdateException ex)
+            {       //change this to logging
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+            // create OrderProduct 
+            var lastOrder = _context.Orders.ToList().Last();
+            var cartProdList = _context.CartProducts.ToList();
+            foreach (var x in cartProdList)
+            {
+                var newOrderProduct = new OrderProduct(lastOrder.OrderId, x.ProductId, 1); // create new Orderproduct and set the quantity to 1
+                var stock = _context.StoreProducts.Where(y => y.ProductId == x.ProductId && 
+                                                         y.Store.LocationId == location.LocationId).FirstOrDefault();
+                if (stock.Quantity > 0)
+                {
+                    await _context.OrderProducts.AddAsync(newOrderProduct);
+                    stock.Quantity = stock.Quantity - 1;
+                    try { await _context.SaveChangesAsync(); }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                        return false;
+                    }
+                    catch (DbUpdateException ex)
+                    {       //change this to logging
+                        Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                        return false;
+                    }
+                }
+            }
 
-            // currentUser
+            // delete all record in cartproduct table 
+            var emptyCart =  _context.CartProducts.ToList();
+            foreach( var x in emptyCart) { _context.CartProducts.Remove(x); }
+            _context.SaveChanges();
+
             return true;
         }
 

@@ -15,6 +15,7 @@ namespace BusinessLayer
         Task<List<CartProduct>> ListOfCartProductsAsync();
 
         Task<List<Product>> ListOfProductsAsync();  // product list
-        Task<bool> CheckoutAsync(); 
+        Task<bool> CheckoutAsync(); // checkout and empty cart
+     
     }
 }

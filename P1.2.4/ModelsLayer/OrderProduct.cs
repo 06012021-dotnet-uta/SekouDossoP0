@@ -24,5 +24,12 @@ namespace ModelsLayer
 
         [Required]
         public int Quantity { get; set; }
+
+        public OrderProduct(int orderId, int productId, int quantity)
+        {
+            this.OrderId = orderId;
+            this.ProductId = productId;
+            this.Quantity = quantity;
+        }
     }
 }

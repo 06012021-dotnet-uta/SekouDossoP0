@@ -92,9 +92,9 @@ namespace P1Mvc.Controllers
         public async Task<ActionResult> Checkout()
         {
 
-            var x = await _cp.CheckoutAsync();
+            await _cp.CheckoutAsync();
             
-            return View();
+            return View("Checkout");
         }
 
         // POST: CartProductController/Create

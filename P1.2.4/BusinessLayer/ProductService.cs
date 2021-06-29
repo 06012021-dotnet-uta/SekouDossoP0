@@ -110,5 +110,11 @@ namespace BusinessLayer
             Console.WriteLine(_location);
             return true;
         }
+
+        // current location
+        public static Location CurrentLocation()
+        {
+            return _location;
+        }
     }
 }
