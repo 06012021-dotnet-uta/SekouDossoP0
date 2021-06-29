@@ -4,17 +4,16 @@
     ViewData["Title"] = "ListCartProduct";
 }
 
-<h1>Shopping Cart</h1>
 
 <p>
-    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home</a>
-
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home Page</a>
 </p>
+<h1>Shopping Cart</h1>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
+                Product Name            
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductDescription)

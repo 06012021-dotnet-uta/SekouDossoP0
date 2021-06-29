@@ -41,6 +41,7 @@ namespace P1Mvc.Controllers
             List<Location> locations = await _order.LocationOrderListAsync();
             List<Order> orders = await _order.OrderListAsync();
             List<Order> orderList = new List<Order>();
+            
             foreach (var  xx in locations)
             { 
                     var matchOrders = orders.Where(x => x.LocationId == xx.LocationId).ToList();
@@ -105,9 +106,26 @@ namespace P1Mvc.Controllers
 
 
         // GET: OrderController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            List<Order> orders = await _order.OrderListAsync();
+            var targetOrder = orders.Where(x => x.OrderId == id).FirstOrDefault();
+            var orderProducts = await _order.OrderProductListAsync();
+            var orderProds = orderProducts.Where(x => x.OrderId == id).ToList();
+            List<Product> prodList = new List<Product>();
+            var products = await _order.ProductListAsync();
+            int total = 0;
+            foreach (var xx in orderProds)
+            {
+                var targetProds = products.Where(x => x.ProductId == xx.ProductId).ToList();
+                foreach( var p in targetProds) {
+                    total += p.ProductPrice;
+                    prodList.Add(p); 
+                }        
+            }
+            ViewBag.OrderId = id;
+            ViewBag.total = total;
+            return View(prodList);
         }
 
         // GET: OrderController/Create

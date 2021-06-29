@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ModelsLayer.Product>
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<p>
+    <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">Home Page</a>
+</p>
+<h1>Order Details</h1>
+<h1>Order Id :  @ViewBag.OrderId</h1>
+
+<table class="table">
+    <thead>
+        
+        <tr>
+            <th>
+                Product Name              @* @Html.DisplayNameFor(model => model.Order) *@
+            </th>
+            <th>
+                Description           @* @Html.DisplayNameFor(model => model.Product) *@
+            </th>
+            <th>
+                Price                 @* @Html.DisplayNameFor(model => model.Quantity) *@
+            </th>
+             <th>
+                Quantity                 @* @Html.DisplayNameFor(model => model.Quantity) *@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+               1
+            </td>
+            @* <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderProductId">Delete</a>
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+<h2>Total :$ @ViewBag.total</h2>

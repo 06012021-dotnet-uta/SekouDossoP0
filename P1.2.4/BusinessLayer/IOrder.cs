@@ -13,5 +13,7 @@ namespace BusinessLayer
         Task<List<Order>> OrderListAsync();
         Task<List<Location>> LocationOrderListAsync();
         Task<List<User>> UserOrderListAsync();
+        Task<List<OrderProduct>> OrderProductListAsync(); // orderProduct list
+        Task<List<Product>> ProductListAsync(); // Product list
     }
 }

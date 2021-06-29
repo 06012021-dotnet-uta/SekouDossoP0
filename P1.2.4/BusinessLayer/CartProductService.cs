@@ -105,7 +105,9 @@ namespace BusinessLayer
             var cartProdList = _context.CartProducts.ToList();
             foreach (var x in cartProdList)
             {
-                var newOrderProduct = new OrderProduct(lastOrder.OrderId, x.ProductId, 1); // create new Orderproduct and set the quantity to 1
+                // create new Orderproduct and set the quantity to 1
+                var newOrderProduct = new OrderProduct(lastOrder.OrderId, x.ProductId, 1);
+                // check stock 
                 var stock = _context.StoreProducts.Where(y => y.ProductId == x.ProductId && 
                                                          y.Store.LocationId == location.LocationId).FirstOrDefault();
                 if (stock.Quantity > 0)
