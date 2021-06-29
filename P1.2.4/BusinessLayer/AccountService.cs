@@ -31,27 +31,53 @@ namespace BusinessLayer
         /// </summary>
         /// <param name="currentUser"></param>
         /// <returns></returns>
-        public async Task<List<Account>> LoginAsync(Account currentUser)
+        // public async Task<List<Account>> LoginAsync(Account currentUser)
+        // {
+        //     // List<Account> ps = null;
+        //     // List<Account> ps = new List<Account>();
+        //     try
+        //     {
+        //         ps = _context.Accounts.ToList();
+        //     }
+        //     catch (ArgumentNullException ex)
+        //     {
+        //         Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Console.WriteLine($"There was a problem gettign the players list => {ex}");
+        //     }
+
+        //     _user = _context.Users.ToList().Where(x => x.UserName == currentUser.UserName).FirstOrDefault();
+        //     //Console.WriteLine($"user => {User}");
+
+        //     return ps;
+        // }
+        public async Task<bool> LoginAsync(Account a)
         {
             // List<Account> ps = null;
             // List<Account> ps = new List<Account>();
+            bool al = true;
             try
             {
-                ps = _context.Accounts.ToList();
+                al =  _context.Accounts.Where(x => x.UserName==a.UserName && x.UserPassWord==a.UserPassWord).ToList().Count>0;
+
             }
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+                return false;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"There was a problem gettign the players list => {ex}");
+                return false;
             }
 
-            _user = _context.Users.ToList().Where(x => x.UserName == currentUser.UserName).FirstOrDefault();
+            _user = _context.Users.ToList().Where(x => x.UserName == a.UserName).FirstOrDefault();
             //Console.WriteLine($"user => {User}");
 
-            return ps;
+            return al;
         }
 
         // account List 
@@ -72,7 +98,7 @@ namespace BusinessLayer
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"There was a problem gettign the players list => {ex}");
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
             }
             return ps;
         }

@@ -9,7 +9,9 @@ namespace BusinessLayer
 {
     public interface IAccount
     {
-        Task<List<Account>> LoginAsync(Account currentUser);
+        // Task<List<Account>> LoginAsync(Account currentUser);
+
+        Task<bool> LoginAsync(Account a);
         Task<List<Account>> AccountListAsync(); // account list
     }
 }
