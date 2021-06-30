@@ -33,7 +33,6 @@ namespace P1Mvc.Controllers
         // login 
         public async Task<ActionResult> UserLogin(Account a)
         {
-            
             bool r =  await _a.LoginAsync(a);
             if (r) { return View("MainLandingPage");}
              else { return View("HomeLandingPage"); }

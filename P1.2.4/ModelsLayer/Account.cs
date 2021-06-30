@@ -25,7 +25,6 @@ namespace ModelsLayer
         {
             this.UserName = userName;
             this.UserPassWord = userPassWord;
-
         }
     }
 
