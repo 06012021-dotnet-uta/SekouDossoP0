@@ -31,6 +31,8 @@ steps:
     version: '5.0.x'
 
 - task: DotNetCoreCLI@2
+  displayName: building project
+
   inputs:
     command: 'build'
     projects: '$(solution)'
