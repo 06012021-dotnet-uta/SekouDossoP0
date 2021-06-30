@@ -4,12 +4,6 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- task: AzureWebApp@1
-  inputs:
-    appType: 'webApp'
-    appName: 'shoppingbay'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'auto'
 - main
 
 pool:
