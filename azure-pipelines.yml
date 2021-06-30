@@ -21,7 +21,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-# steps:
+steps:
 # - task: NuGetToolInstaller@1
 
 - task: UseDotNet@2
