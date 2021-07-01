@@ -25,11 +25,17 @@ variables:
 steps:
 # - task: NuGetToolInstaller@1
 
+# - task: UseDotNet@2
+#   displayName: 'Installing .NET Core SDK'
+#   inputs:
+#     packageType: 'sdk'
+#     version: '5.0.x'
+
 - task: UseDotNet@2
-  displayName: 'Installing .NET Core SDK'
+  displayName: 'Install .Net 5 SDK'
   inputs:
     packageType: 'sdk'
-    version: '5.0.x'
+    version: '5.0.100-rc.1.20452.10'
 
 - task: DotNetCoreCLI@2
   displayName: building project
