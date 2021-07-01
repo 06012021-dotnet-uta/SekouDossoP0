@@ -3,20 +3,19 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-# trigger:
-# - main
-pr:
-  branches:
-    include:
-      - main
-  paths:
-    include:
-      - demo/P1.2.4/P1Mvc
+trigger:
+- main
+# pr:
+#   branches:
+#     include:
+#       - main
+#   paths:
+#     include:
+#       - demo/P1.2.4/P1Mvc
 
 
-pool: 
-# pipeline1
-  vmImage: 'windows-latest'
+pool: pipeline1
+  # vmImage: 'windows-latest'
 
 variables:
   solution: '/demo/P1.2.4/P1Mvc/*.sln'
@@ -48,13 +47,13 @@ steps:
     zipAfterPublish: true
     
 # - task: AzureRmWebAppDeployment@4
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
-    appType: 'webApp'
-    WebAppName: 'shoppingbay'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
+#     appType: 'webApp'
+#     WebAppName: 'shoppingbay'
+#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 #   inputs:
 #     ConnectionType: 'AzureRM'
 #     # azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
