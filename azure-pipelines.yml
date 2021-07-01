@@ -3,15 +3,15 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-# trigger:
-# - main
-pr:
-  branches:
-    include:
-      - main
-  paths:
-    include:
-      - demo/P1.2.4/P1Mvc
+trigger:
+- main
+# pr:
+#   branches:
+#     include:
+#       - main
+#   paths:
+#     include:
+#       - demo/P1.2.4/P1Mvc
 
 
 pool: pipeline1
