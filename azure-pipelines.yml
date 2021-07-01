@@ -24,6 +24,9 @@ variables:
 
 steps:
 # - task: NuGetToolInstaller@1
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
 
 # - task: UseDotNet@2
 #   displayName: 'Installing .NET Core SDK'
