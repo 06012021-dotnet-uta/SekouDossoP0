@@ -3,15 +3,15 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-trigger:
-- main
-# pr:
-#   branches:
-#     include:
-#       - main
-#   paths:
-#     include:
-#       - demo/P1.2.4/P1Mvc
+# trigger:
+# - main
+pr:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - demo/P1.2.4/P1Mvc
 
 
 pool: MacPoolAgent
@@ -53,17 +53,19 @@ steps:
 #     projects: '$(solution)'
 #     arguments: '--configuration $(buildConfiguration)'
 
+- task: DotNetCoreCLI@2
+  displayName: Build Project
+  inputs:
+    command: 'build'
+    projects: '$(solotion)'
+    arguments: '--configuration $(BuildConfiguration)'
+
 # - task: DotNetCoreCLI@2
 #   displayName: Build
 #   inputs:
-#     projects: '**/*.csproj'
+#     command: 'build'
+#     projects: 'https://github.com/06012021-dotnet-uta/SekouDossoP0/tree/main/P1.2.4/P1Mvc'
 #     arguments: '--configuration $(BuildConfiguration)'
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    command: 'build'
-    projects: 'https://github.com/06012021-dotnet-uta/SekouDossoP0/tree/main/P1.2.4/P1Mvc'
-    arguments: '--configuration $(BuildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
