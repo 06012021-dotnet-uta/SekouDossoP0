@@ -11,7 +11,7 @@ pr:
       - main
   paths:
     include:
-      - demo/P1.2.4/P1Mvc
+      - demo/P1.2.4
 
 
 pool: MacPoolAgent
