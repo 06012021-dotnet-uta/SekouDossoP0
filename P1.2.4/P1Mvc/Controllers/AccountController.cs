@@ -27,7 +27,7 @@ namespace P1Mvc.Controllers
         public ActionResult Login()
         {
 
-            _logger.LogInformation("we are in userController/create");
+            //_logger.LogInformation("we are in userController/create");
             return View("UserLogin");
         }
         // login 
