@@ -28,12 +28,11 @@ namespace P1Mvc
         {
             services.AddControllersWithViews();
             services.AddDbContext<P1Db>( options => {
-                if (!options.IsConfigured) // check if the options have already been configured in the testing suite
+                if (!options.IsConfigured)
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
                     //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                }
-               
+                }               
             }); // make P1Db class PUBLIC
             services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
             services.AddScoped<ILocation, LocationService>();
