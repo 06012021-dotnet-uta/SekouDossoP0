@@ -30,7 +30,8 @@ namespace P1Mvc
             services.AddDbContext<P1Db>( options => {
                 if (!options.IsConfigured) // check if the options have already been configured in the testing suite
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
+                    //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 }
                
             }); // make P1Db class PUBLIC
