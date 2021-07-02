@@ -27,12 +27,13 @@ namespace P1Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<P1Db>( options => {
+            services.AddDbContext<P1Db>(options =>
+            {
                 if (!options.IsConfigured)
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
-                    //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                }               
+                }
+            
             }); // make P1Db class PUBLIC
             services.AddScoped<IRegisterUser, Register>();  // add interfaces in scopp 
             services.AddScoped<ILocation, LocationService>();
@@ -70,7 +71,8 @@ namespace P1Mvc
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Main}/{action=Index}");
+                //pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
