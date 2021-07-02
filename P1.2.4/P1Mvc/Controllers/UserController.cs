@@ -100,7 +100,7 @@ namespace P1Mvc.Controllers
         public ActionResult Create()
         {
 
-            _logger.LogInformation("we are in userController/create");
+            //_logger.LogInformation("we are in userController/create");
             return View("CreateUser");
         }
 
