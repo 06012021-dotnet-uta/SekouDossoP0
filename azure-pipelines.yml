@@ -46,12 +46,19 @@ steps:
 #     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 #     version: '5.0.100-rc.1.20452.10'
 
+# - task: DotNetCoreCLI@2
+#   displayName: building project
+#   inputs:
+#     command: 'build'
+#     projects: '$(solution)'
+#     arguments: '--configuration $(buildConfiguration)'
+
 - task: DotNetCoreCLI@2
-  displayName: building project
+  displayName: Build
   inputs:
-    command: 'build'
-    projects: '$(solution)'
-    arguments: '--configuration $(buildConfiguration)'
+    projects: '**/*.csproj'
+
+    arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   inputs:
