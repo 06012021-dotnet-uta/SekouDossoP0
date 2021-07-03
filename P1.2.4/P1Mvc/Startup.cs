@@ -31,6 +31,7 @@ namespace P1Mvc
             {
                 if (!options.IsConfigured)
                 {
+                    // options.UseSqlServer(Configuration.GetConnectionString(""));
                     options.UseSqlServer(Configuration.GetConnectionString("newpipeline"));
                     //options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
                 }
