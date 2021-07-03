@@ -25,13 +25,13 @@ variables:
 
 
 steps:
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'sonarcloud_service_connection'
-    organization: 'sekoudosso0837'
-    scannerMode: 'MSBuild'
-    projectKey: 'sekoudosso0837_Pipeline0837'
-    projectName: 'Pipeline0837'
+# - task: SonarCloudPrepare@1
+#   inputs:
+#     SonarCloud: 'sonarcloud_service_connection'
+#     organization: 'sekoudosso0837'
+#     scannerMode: 'MSBuild'
+#     projectKey: 'sekoudosso0837_Pipeline0837'
+#     projectName: 'Pipeline0837'
 
 - task: DotNetCoreCLI@2
   displayName: Build Project
@@ -46,14 +46,14 @@ steps:
     arguments: '--configuration $(BuildConfiguration)'
     workingDirectory: '**/P1.2.4/P1Mvc/'
 
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: 
-- task: SonarCloudAnalyze@1
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
+# - task: PublishCodeCoverageResults@1
+#   inputs:
+#     codeCoverageTool: 'Cobertura'
+#     summaryFileLocation: 
+# - task: SonarCloudAnalyze@1
+# - task: SonarCloudPublish@1
+#   inputs:
+#     pollingTimeoutSec: '300'
 - task: DotNetCoreCLI@2
   displayName: publishing
   inputs:
