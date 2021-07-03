@@ -23,6 +23,13 @@ steps:
     version: '5.0.x'
 
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'MacPipeline'
+    organization: 'sekoudosso0837'
+    scannerMode: 'MSBuild'
+    projectKey: 'sekoudosso0837_06012021-dotnet-uta.SekouDossoP0'
+    projectName: '06012021-dotnet-uta.SekouDossoP0'
 - task: DotNetCoreCLI@2
   displayName: Build Project
   inputs:
