@@ -36,8 +36,8 @@ steps:
     SonarCloud: 'sonarcloud_service_connection'
     organization: 'sekoudosso0837'
     scannerMode: 'MSBuild'
-    projectKey: 'sekoudosso0837_Pipeline0837'
-    projectName: 'Pipeline0837'
+    projectKey: 'sekoudosso0837_MacPipeline'
+    projectName: 'MacPipeline'
 
 - task: DotNetCoreCLI@2
   displayName: Build Project
