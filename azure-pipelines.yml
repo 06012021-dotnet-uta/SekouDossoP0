@@ -1,20 +1,11 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
-- main
-# pr: none
-# trigger:
-#   branches:
-#     include:
-#     - main
-#   paths:
-#     include:
-#     - demo/P1.2.4/P1Mvc
+  - main
 
-# pool: pipeline1
 pool: MacPoolAgent
   # vmImage: 'windows-latest'
 
@@ -23,58 +14,25 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-
 steps:
+
 - task: UseDotNet@2
   displayName: 'Installing .NET Core SDK'
   inputs:
     packageType: 'sdk'
     version: '5.0.x'
 
-# - task: SonarCloudPrepare@1
-#   inputs:
-#     SonarCloud: 'sonarcloud_service_connection'
-#     organization: 'sekoudosso0837'
-#     scannerMode: 'MSBuild'
-#     projectKey: 'sekoudosso0837_MacPipeline'
-#     projectName: 'MacPipeline'
 
-# - task: DotNetCoreCLI@2
-#   displayName: Build Project
-#   inputs:
-#     command: 'build'
-#     projects: '$(solution)'
-#     arguments: '--configuration $(BuildConfiguration)'
-
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'test'
-#     projects: '$(solution)'
-#     arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
-#     testRunTitle: 'Dotnet tests running'
-#     workingDirectory: 'demo/P1.2.4/P1Mvc'
-
-# - task: PublishCodeCoverageResults@1
-#   inputs:
-#     codeCoverageTool: 'Cobertura'
-#     summaryFileLocation: 
-# - task: SonarCloudAnalyze@1
-# - task: SonarCloudPublish@1
-#   inputs:
-#     pollingTimeoutSec: '300'
-# - task: DotNetCoreCLI@2
-#   displayName: publishing
-#   inputs:
-#     command: 'publish'
-#     publishWebProjects: false
-#     projects: '$(solution)'
-#     zipAfterPublish: true
-    
-- task: AzureRmWebAppDeployment@4
-- task: AzureRmWebAppDeployment@4
+- task: DotNetCoreCLI@2
+  displayName: Build Project
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
-    appType: 'webApp'
-    WebAppName: 'shoppingbay'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    command: 'build'
+    projects: '$(solution)'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '$(solution)'
+    zipAfterPublish: true
