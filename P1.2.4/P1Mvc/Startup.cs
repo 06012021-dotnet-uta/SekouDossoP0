@@ -73,8 +73,8 @@ namespace P1Mvc
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Main}/{action=Index}");
-                //pattern: "{controller=Home}/{action=Index}/{id?}");
+                    //pattern: "{controller=Main}/{action=Index}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
