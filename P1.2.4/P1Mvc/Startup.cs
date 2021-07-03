@@ -31,7 +31,8 @@ namespace P1Mvc
             {
                 if (!options.IsConfigured)
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
+                    options.UseSqlServer(Configuration.GetConnectionString("newpipeline"));
+                    //options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
                 }
             
             }); // make P1Db class PUBLIC
