@@ -29,6 +29,11 @@ steps:
     projects: '$(solution)'
     arguments: '--configuration $(BuildConfiguration)'
 
+#you MUST have this task to get test code coverage results.
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '**/coburtura/coverage.xml'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
