@@ -39,12 +39,12 @@ steps:
 #     projectKey: 'sekoudosso0837_MacPipeline'
 #     projectName: 'MacPipeline'
 
-- task: DotNetCoreCLI@2
-  displayName: Build Project
-  inputs:
-    command: 'build'
-    projects: '$(solution)'
-    arguments: '--configuration $(BuildConfiguration)'
+# - task: DotNetCoreCLI@2
+#   displayName: Build Project
+#   inputs:
+#     command: 'build'
+#     projects: '$(solution)'
+#     arguments: '--configuration $(BuildConfiguration)'
 
 # - task: DotNetCoreCLI@2
 #   inputs:
@@ -62,13 +62,13 @@ steps:
 # - task: SonarCloudPublish@1
 #   inputs:
 #     pollingTimeoutSec: '300'
-- task: DotNetCoreCLI@2
-  displayName: publishing
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '$(solution)'
-    zipAfterPublish: true
+# - task: DotNetCoreCLI@2
+#   displayName: publishing
+#   inputs:
+#     command: 'publish'
+#     publishWebProjects: false
+#     projects: '$(solution)'
+#     zipAfterPublish: true
     
 - task: AzureRmWebAppDeployment@4
 - task: AzureRmWebAppDeployment@4
