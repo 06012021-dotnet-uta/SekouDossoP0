@@ -34,6 +34,8 @@ steps:
   inputs:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '**/coburtura/coverage.xml'
+
+- task: SonarCloudAnalyze@1
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
