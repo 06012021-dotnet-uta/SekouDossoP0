@@ -31,13 +31,13 @@ steps:
     packageType: 'sdk'
     version: '5.0.x'
 
-# - task: SonarCloudPrepare@1
-#   inputs:
-#     SonarCloud: 'sonarcloud_service_connection'
-#     organization: 'sekoudosso0837'
-#     scannerMode: 'MSBuild'
-#     projectKey: 'sekoudosso0837_MacPipeline'
-#     projectName: 'MacPipeline'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud_service_connection'
+    organization: 'sekoudosso0837'
+    scannerMode: 'MSBuild'
+    projectKey: 'sekoudosso0837_MacPipeline'
+    projectName: 'MacPipeline'
 
 - task: DotNetCoreCLI@2
   displayName: Build Project
@@ -54,14 +54,14 @@ steps:
     testRunTitle: 'Dotnet tests running'
     workingDirectory: 'demo/P1.2.4/P1Mvc'
 
-# - task: PublishCodeCoverageResults@1
-#   inputs:
-#     codeCoverageTool: 'Cobertura'
-#     summaryFileLocation: 
-# - task: SonarCloudAnalyze@1
-# - task: SonarCloudPublish@1
-#   inputs:
-#     pollingTimeoutSec: '300'
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: DotNetCoreCLI@2
   displayName: publishing
   inputs:
@@ -70,11 +70,11 @@ steps:
     projects: '$(solution)'
     zipAfterPublish: true
     
-# - task: AzureRmWebAppDeployment@4
-# - task: AzureRmWebAppDeployment@4
-#   inputs:
-#     ConnectionType: 'AzureRM'
-#     azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
-#     appType: 'webApp'
-#     WebAppName: 'shoppingbay'
-#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+- task: AzureRmWebAppDeployment@4
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
+    appType: 'webApp'
+    WebAppName: 'shoppingbay'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
