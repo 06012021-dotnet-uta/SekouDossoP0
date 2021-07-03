@@ -37,14 +37,14 @@ steps:
 #   inputs:
 #     packageType: 'sdk'
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
-    appType: 'webApp'
-    WebAppName: 'shoppingbay'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    version: '5.0.100-rc.1.20452.10'
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
+#     appType: 'webApp'
+#     WebAppName: 'shoppingbay'
+#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+#     version: '5.0.100-rc.1.20452.10'
 
 # - task: DotNetCoreCLI@2
 #   displayName: building project
@@ -74,13 +74,13 @@ steps:
     zipAfterPublish: true
     
 # - task: AzureRmWebAppDeployment@4
-# - task: AzureRmWebAppDeployment@4
-#   inputs:
-#     ConnectionType: 'AzureRM'
-#     azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
-#     appType: 'webApp'
-#     WebAppName: 'shoppingbay'
-#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
+    appType: 'webApp'
+    WebAppName: 'shoppingbay'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 #   inputs:
 #     ConnectionType: 'AzureRM'
 #     # azureSubscription: 'Azure subscription 1(3877ae91-edb2-458d-936b-e62ed2289cdb)'
