@@ -13,8 +13,8 @@ trigger:
 #     include:
 #       - demo/P1.2.4
 
-
-pool: MacPoolAgent
+pool: pipeline1
+# pool: MacPoolAgent
   # vmImage: 'windows-latest'
 
 variables:
