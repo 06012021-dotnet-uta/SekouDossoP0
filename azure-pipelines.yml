@@ -14,8 +14,8 @@ trigger:
     include:
     - demo/P1.2.4/P1Mvc
 
-pool: pipeline1
-# pool: MacPoolAgent
+# pool: pipeline1
+pool: MacPoolAgent
   # vmImage: 'windows-latest'
 
 variables:
