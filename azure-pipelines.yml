@@ -10,7 +10,7 @@ pool: pipeline1
   # vmImage: 'windows-latest'
 
 variables:
-  solution: '**/P1.2.4/P1Mvc/*.sln'
+  solution: '**/P1/P1Mvc/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
