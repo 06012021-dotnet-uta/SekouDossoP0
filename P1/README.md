@@ -7,4 +7,6 @@ Add movie to favorite_movie\
 Rate a movie\
 Comment a movie\
 Buy or rent a movie\
-persistent data to azure db\ 
+persistent data to azure db
+
+# Technologies and Framework
