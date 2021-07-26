@@ -1,5 +1,5 @@
-##User Story 
-add a new User
+User Story\ 
+add a new User\
 User should be able to login/logout
 search a movie by (title)
 display details of a movie
