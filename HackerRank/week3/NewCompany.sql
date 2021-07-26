@@ -6,3 +6,4 @@ select company_code, founder,
 (select count(distinct employee_code) from Employee where Company.company_code=Employee.company_code)
 from Company 
 order by company_code;
+
