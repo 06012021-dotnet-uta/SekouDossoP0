@@ -1,0 +1,13 @@
+<p> display player </p>
+<h2> Name: {{ player.name }} Age: {{ player.age }} Country: {{ player.country }}</h2>
+<a routerLink="/heroes">Home</a>
+<!-- <router-outlet></router-outlet> -->
+
+
+<div >
+  <ul>
+    <li  *ngFor="let player of players">
+      Name: {{ player.name }} Age: {{ player.age }} Country: {{ player.country }}
+    </li>
+  </ul>
+</div>
